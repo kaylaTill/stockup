@@ -1,6 +1,6 @@
 import { register } from "../serviceWorker";
 import { Form } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const Register = ((props) => {
     return(
