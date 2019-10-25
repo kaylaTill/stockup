@@ -38,7 +38,7 @@ class App extends React.Component {
               StockUP.
             </h2>
           </Link>
-          <Register/>
+          <Register handleRegister={this.handleRegister}/>
           
           <Suspense fallback={<div/>}>
             <Switch>
