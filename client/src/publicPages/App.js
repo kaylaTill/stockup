@@ -4,6 +4,7 @@ import Register from './registration';
 import './App.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
+import Logo from '.././stockUp-logo-white';
 
 
 function App() {
@@ -12,9 +13,12 @@ function App() {
       <Router>
 
         <Link style={{ textDecoration: 'none'}} to={'/'}>
-          <h2 className="header">
+          {/* <h2 className="header">
             StockUP.
-          </h2>
+          </h2> */}
+          <div className="logo-pic">
+            <img src={Logo} alt="stockUP-logo"></img>
+          </div>
         </Link>
         <Register/>
         
