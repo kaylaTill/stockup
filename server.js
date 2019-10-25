@@ -44,6 +44,7 @@ app.post('/registerUser', function (req, res, next) {
                     })
                         .then((user) => {
                             req.session.user = user;
+                            
                             req.session.save((err) => {
                                 if (err) {
                                     console.log(err);
@@ -66,10 +67,6 @@ app.post('/registerUser', function (req, res, next) {
         });
 });
 
-
-app.post('/reg', (req, res, next) => {
-    res.json('gotcha');
-})
 
 
 app.post('/login', function (req, res, next) {
@@ -108,9 +105,9 @@ app.get('/loggedIn', function (req, res, next) {
     if (req.session.user) {
         console.log(`-------  Succesful session for ${req.session.user} ------`);
         return res.sendStatus(200);
-    } else {
-        res.sendStatus(404);
-    }
+    } 
+    console.log(req.session.user);
+    res.sendStatus(404);
 });
 
 // log out user 

@@ -1,16 +1,19 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+// import Logo from '../stockUP-logo-white.png';
 import Register from './registration/registration';
-import './App.css';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
-import Logo from '../stockUP-logo-white.png';
+import Login from './login/login'
 import axios from 'axios';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
+
+
     this.handleRegister = this.handleRegister.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   handleRegister(first_name, last_name, username, password) {
@@ -18,13 +21,30 @@ class App extends React.Component {
       first_name: first_name,
       last_name: last_name,
       username: username,
-      password: password
+      password: password,
+      loginFailed: false
     })
     .then((res) => {
       console.log(res);
     })
 
   }
+
+  handleLogin(username, password) {
+    axios.post('/login', {
+      username: username,
+      password: password
+    })
+      .then((res) => {
+        window.location.reload(false);
+      })
+      .catch((error) => {
+        this.setState({
+          loginFailed: true
+        })
+      });
+  }
+
 
 
 
@@ -39,6 +59,7 @@ class App extends React.Component {
             </h2>
           </Link>
           <Register handleRegister={this.handleRegister}/>
+          <Login handleLogin={this.handleLogin}/>
           <Suspense fallback={<div/>}>
             <Switch>
             </Switch>
