@@ -1,11 +1,20 @@
 import React from 'react';
 
-function App() {
-    return (
-        <div className="App">
-            private
-        </div>
-    );
+class PrivatePages extends React.Component {
+    constructor(props) {
+        super(props)
+        
+    }
+
+
+
+    render() {
+        return (
+            <div className="PrivatePages">
+                private
+            </div>
+        );
+    }
 }
 
-export default App;
+export default PrivatePages;

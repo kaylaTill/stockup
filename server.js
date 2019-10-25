@@ -70,7 +70,7 @@ app.post('/registerUser', function (req, res, next) {
 
 
 app.post('/login', function (req, res, next) {
-    User.findOne({
+    User.User.findOne({
         where: {
             username: req.body.username
         }
