@@ -33,7 +33,6 @@ class Register extends React.Component  {
 
 
     handleChange(event) {
-        console.log(event.target.name + ':' + event.target.value)
         this.setState({ [event.target.name]: event.target.value });
     }
 
@@ -56,7 +55,7 @@ class Register extends React.Component  {
     
                 <Collapse in={this.state.open}>
                     <div id="form-collapse">        
-                        <Form className="registration-form"> 
+                        <Form onSubmit={this.handleRegister}className="registration-form"> 
                             <Form.Group controlId="formBasicName">
                                 <Form.Control type="name" 
                                     placeholder="First Name"
@@ -80,8 +79,9 @@ class Register extends React.Component  {
                             <Form.Group controlId="formBasicUsername">
                                 <Form.Control type="username" 
                                     placeholder="Username"
-                                    required name="username"
-                                    value={this.state.last_name}
+                                    required 
+                                    name="username"
+                                    value={this.state.username}
                                     onChange={this.handleChange} />
                             </Form.Group>
     
@@ -95,7 +95,6 @@ class Register extends React.Component  {
                             </Form.Group>
                             <Button variant="outline-light" 
                                 block size='lg'  
-                                onClick={this.handleRegister}
                                 type="submit">
                                 Sign up
                             </Button>

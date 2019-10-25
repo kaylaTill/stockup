@@ -2,15 +2,21 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const bcrypt = require('bcrypt');
-var session = require('express-session')
+var session = require('express-session');
+var request = require('request');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
+const Sequelize = require('sequelize');
+const User = require('./models/users.js');
 const secret = '_my_Secret_String_2464582';
 
 
 // Serve the static files from React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(logger('dev'));
+app.use(express.json());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({
     secret: secret,
     saveUninitialized: true,
@@ -21,16 +27,15 @@ app.use(session({
 }));
 
 
-
-app.post('/register', function (req, res, next) {
-    users.User.findAll({
+app.post('/registerUser', function (req, res, next) {
+    console.log(req.body)
+    User.User.findAll({
         where: { username: req.body.username }
     })
-
         .then((results) => {
             if (results.length == 0) {
                 bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-                    users.User.create({
+                    User.User.create({
                         first_name: req.body.first_name,
                         last_name: req.body.last_name,
                         username: req.body.username,
@@ -44,14 +49,14 @@ app.post('/register', function (req, res, next) {
                                 }
                                 res.sendStatus(200);
                             })
-                            console.log('Succesful session created for new user!');
+                            console.log('------ Succesful session created for new user!------');
                         })
                         .catch(function (err) {
                             console.log(`Hash Error: ${err}`);
                         })
                 });
             } else {
-                console.log('Invalid Registration');
+                console.log('-------–Invalid Registration-------');
                 res.sendStatus(401);
             }
         })
@@ -62,7 +67,7 @@ app.post('/register', function (req, res, next) {
 
 
 app.post('/login', function (req, res, next) {
-    users.User.findOne({
+    User.findOne({
         where: {
             username: req.body.username
         }
@@ -70,7 +75,7 @@ app.post('/login', function (req, res, next) {
         .then((user) => {
             if (!user) {
                 res.sendStatus(401);
-                console.log("Sorry, couldn't find a user under that username!");
+                console.log("-----Sorry, couldn't find a user under that username!-----");
             } else {
                 //compare username and user password
                 bcrypt.compare(req.body.password, user.password, function (err, result) {
@@ -85,7 +90,7 @@ app.post('/login', function (req, res, next) {
                         });
                     } else {
                         res.sendStatus(401);
-                        console.log('Incorrect password, Please try again!');
+                        console.log('------Incorrect password, Please try again!----');
                     }
                 });
             }
@@ -95,7 +100,7 @@ app.post('/login', function (req, res, next) {
 // testing cookie connection
 app.get('/loggedIn', function (req, res, next) {
     if (req.session.user) {
-        console.log(`Succesful session for ${req.session.user}`);
+        console.log(`-------  Succesful session for ${req.session.user} ------`);
         return res.sendStatus(200);
     } else {
         res.sendStatus(404);
