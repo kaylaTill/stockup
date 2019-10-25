@@ -22,7 +22,7 @@ app.use(session({
 
 
 
-router.post('/register', function (req, res, next) {
+app.post('/register', function (req, res, next) {
     users.User.findAll({
         where: { username: req.body.username }
     })
@@ -61,7 +61,7 @@ router.post('/register', function (req, res, next) {
 });
 
 
-router.post('/login', function (req, res, next) {
+app.post('/login', function (req, res, next) {
     users.User.findOne({
         where: {
             username: req.body.username
@@ -93,7 +93,7 @@ router.post('/login', function (req, res, next) {
 });
 
 // testing cookie connection
-router.get('/loggedIn', function (req, res, next) {
+app.get('/loggedIn', function (req, res, next) {
     if (req.session.user) {
         console.log(`Succesful session for ${req.session.user}`);
         return res.sendStatus(200);
@@ -102,7 +102,8 @@ router.get('/loggedIn', function (req, res, next) {
     }
 });
 
-router.get('/logout', (req, res, next) => {
+// log out user 
+app.get('/logout', (req, res, next) => {
     req.session.destroy((success, err) => {
         if (err) {
             return res.sendStatus(404)

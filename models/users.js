@@ -1,4 +1,4 @@
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 const sequelize = new Sequelize('mysql://root@localhost:3306/stockup');
 
 const User = sequelize.define('user', {
@@ -26,7 +26,6 @@ const User = sequelize.define('user', {
 
 
 //test connection to db
-
 sequelize
     .authenticate()
     .then(() => {
@@ -39,12 +38,8 @@ sequelize
 
 // sync user model
 User.sync({ force: false }).then(() => {
-    console.log('Synced to user table');
+    console.log('-------Synced to user table-------');
 });
 
 
-module.exports = {
-    sequelize: sequelize,
-    Sequelize: Sequelize,
-    User: User
-}
+module.exports = User;
