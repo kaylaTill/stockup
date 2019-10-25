@@ -29,42 +29,28 @@ app.use(session({
 
 
 app.post('/registerUser', function (req, res, next) {
-    console.log(req.body)
-    User.User.findAll({
-        where: { username: req.body.username }
-    })
-        .then((results) => {
-            if (results.length == 0) {
-                bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-                    User.User.create({
-                        first_name: req.body.first_name,
-                        last_name: req.body.last_name,
-                        username: req.body.username,
-                        password: hash
-                    })
-                        .then((user) => {
-                            req.session.user = user;
-                            
-                            req.session.save((err) => {
-                                if (err) {
-                                    console.log(err);
-                                }
-                                res.sendStatus(200);
-                            })
-                            console.log('------ Succesful session created for new user!------');
-                        })
-                        .catch(function (err) {
-                            console.log(`Hash Error: ${err}`);
-                        })
-                });
-            } else {
-                console.log('-------–Invalid Registration-------');
-                res.sendStatus(401);
-            }
+    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+        User.User.create({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            username: req.body.username,
+            password: hash
         })
-        .catch((err) => {
-            console.log(err);
-        });
+        .then((user) => {
+            req.session.user = user;
+            
+            req.session.save((err) => {
+                if (err) {
+                    console.log(err);
+                }
+                res.sendStatus(200);
+            })
+            console.log('------ Succesful session created for new user!------');
+        })
+        .catch(function (err) {
+            console.log(`Hash Error: ${err}`);
+        })
+    })
 });
 
 
