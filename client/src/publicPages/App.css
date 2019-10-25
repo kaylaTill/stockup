@@ -1,8 +1,21 @@
-/* .register-button {
-
-} */
-
-
 body {
-    background-color: black;
+    background-color: rgb(27, 27, 27);
+}
+
+.register-button {
+    font-family: Impact, fantasy;
+    width: 20%;
+    margin-top: 30px;
+    position:relative;
+    top:50%; 
+    left:40%;
+}
+
+
+
+.header {
+    color: white;
+    font-family: Impact, fantasy;
+    text-align: center;
+    margin-top: 20%;
 }
