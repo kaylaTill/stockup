@@ -1,0 +1,17 @@
+.success {
+    font-size: 20px;
+    color: white;
+    font-family: Impact, fantasy;
+    padding: 60px;
+    align: center;
+    text-align: center;
+}
+
+
+.to-button {
+    font-family: Impact, fantasy;
+    width: 30%;
+    position:relative;
+    top:50%; 
+    left: 35%;
+}
