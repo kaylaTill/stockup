@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Register from './registration/registration';
 import Login from './login/login'
 import axios from 'axios';
+import LoginFailure from './login/failedLogin';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -24,10 +25,15 @@ class App extends React.Component {
       password: password,
       loginFailed: false
     })
+    .then(() => {
+      window.location.reload(false);
+    })
     .then((res) => {
       console.log(res);
     })
-
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   handleLogin(username, password) {
@@ -39,9 +45,7 @@ class App extends React.Component {
         window.location.reload(false);
       })
       .catch((error) => {
-        this.setState({
-          loginFailed: true
-        })
+        window.location.href = '/login-failed'
       });
   }
 
@@ -52,7 +56,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-  
           <Link style={{ textDecoration: 'none'}} to={'/'}>
             <h2 className="header">
               StockUP.
@@ -60,8 +63,17 @@ class App extends React.Component {
           </Link>
           <Register handleRegister={this.handleRegister}/>
           <Login handleLogin={this.handleLogin}/>
+
           <Suspense fallback={<div/>}>
             <Switch>
+              <Route exact={true} path={'/register'}>
+                <Register handleRegister={this.handleRegister}/>
+              </Route>
+
+              <Route exact={true} path={'/login-failed'}>
+                <LoginFailure/>
+              </Route>
+
             </Switch>
           </Suspense>
         </Router>
