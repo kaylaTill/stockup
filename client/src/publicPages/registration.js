@@ -35,8 +35,8 @@ const Register = ((props) => {
                         <Form.Group controlId="formBasicPassword">
                             <Form.Control type="password" placeholder="Password" required />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
+                        <Button variant="outline-light" block size='lg'  type="submit">
+                            Sign up
                     </Button>
                     </Form>
                 </div>

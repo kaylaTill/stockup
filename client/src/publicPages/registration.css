@@ -1,4 +1,8 @@
 .registration-form {
-    text-align: center;
+    position: relative;
+    left: 31%;
+    margin-top: 3%;
+    margin-bottom: 5%;
     width: 40%;
+    font-family: Impact, fantasy;
 }
