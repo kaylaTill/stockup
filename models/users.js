@@ -2,7 +2,6 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize('mysql://root@localhost:3306/stockup');
 
 const User = sequelize.define('user', {
-    // user collumns
     first_name: {
         type: Sequelize.STRING,
         allowNull: false
