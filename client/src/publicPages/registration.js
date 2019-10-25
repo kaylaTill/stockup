@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { register } from "../serviceWorker";
 import { Form, Button, Collapse } from 'react-bootstrap';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './registration.css';
+
 
 const Register = ((props) => {
     const [open, setOpen] = useState(false);
@@ -17,21 +19,21 @@ const Register = ((props) => {
 
             <Collapse in={open}>
                 <div id="form-collapse">        
-                    <Form>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                        </Form.Text>
+                    <Form className="registration-form"> 
+                        <Form.Group controlId="formBasicName">
+                            <Form.Control type="name" placeholder="First Name" required />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicName">
+                            <Form.Control type="name" placeholder="Last Name" required />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicUsername">
+                            <Form.Control type="username" placeholder="Username" required />
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Control type="password" placeholder="Password" required />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Submit
