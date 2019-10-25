@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './publicPages/App';
 import * as serviceWorker from './serviceWorker';
-import PrivatePages from './PrivatePages';
+import PrivatePages from './privatePages/PrivatePages';
 import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 
