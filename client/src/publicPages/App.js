@@ -11,22 +11,21 @@ function App() {
     <div className="App">
       <Router>
 
-        <Link style={{ textDecoration: 'none'}}to={'/'}>
+        <Link style={{ textDecoration: 'none'}} to={'/'}>
           <h2 className="header">
             StockUP.
           </h2>
         </Link>
-
-        <Button href={'/register'}  className="register-button" block size='lg' variant="outline-light">
-          Register
-        </Button>
+        <Register/>
+        
 
         <Suspense fallback={<div/>}>
           <Switch>
-            <Route exact={true} path={'/'}>
-            
-            </Route>
-            <Route exact={true} path={'/register'} component={Register}/>
+
+            {/* <Route exact={true} path={'/register'} >
+    
+            </Route> */}
+
           </Switch>
         </Suspense>
       </Router>
