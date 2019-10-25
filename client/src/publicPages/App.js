@@ -9,6 +9,11 @@ import Logo from '../stockUP-logo-white.png';
 class App extends React.Component {
   constructor(props) {
     super(props)
+    this.handleRegister = this.handleRegister.bind(this);
+  }
+  
+  handleRegister() {
+
 
   }
 
