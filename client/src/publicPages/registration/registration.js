@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { register } from "../serviceWorker";
+import { register } from "../../serviceWorker";
 import { Form, Button, Collapse } from 'react-bootstrap';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './registration.css';
 
 

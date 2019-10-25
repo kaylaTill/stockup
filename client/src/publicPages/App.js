@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Register from './registration';
+import Register from './registration/registration';
 import './App.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
