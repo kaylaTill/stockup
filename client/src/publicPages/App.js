@@ -4,7 +4,7 @@ import Register from './registration';
 import './App.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
-import Logo from '.././stockUp-logo-white';
+import Logo from '../stockUp-logo-white';
 
 
 function App() {
