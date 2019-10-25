@@ -20,7 +20,7 @@ class App extends React.Component {
       username: username,
       password: password
     })
-    .then((reg) => {
+    .then((res) => {
       console.log(res);
     })
 
@@ -39,7 +39,6 @@ class App extends React.Component {
             </h2>
           </Link>
           <Register handleRegister={this.handleRegister}/>
-          
           <Suspense fallback={<div/>}>
             <Switch>
             </Switch>

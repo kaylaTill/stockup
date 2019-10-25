@@ -9,6 +9,7 @@ var logger = require('morgan');
 const Sequelize = require('sequelize');
 const User = require('./models/users.js');
 const secret = '_my_Secret_String_2464582';
+const saltRounds = 10;
 
 
 // Serve the static files from React app
@@ -64,6 +65,11 @@ app.post('/registerUser', function (req, res, next) {
             console.log(err);
         });
 });
+
+
+app.post('/reg', (req, res, next) => {
+    res.json('gotcha');
+})
 
 
 app.post('/login', function (req, res, next) {
