@@ -66,10 +66,6 @@ class App extends React.Component {
 
           <Suspense fallback={<div/>}>
             <Switch>
-              <Route exact={true} path={'/register'}>
-                <Register handleRegister={this.handleRegister}/>
-              </Route>
-
               <Route exact={true} path={'/login-failed'}>
                 <LoginFailure/>
               </Route>

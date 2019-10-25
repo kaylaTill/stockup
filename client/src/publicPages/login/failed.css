@@ -1,7 +1,17 @@
 .failed {
-    font-size: 15px;
-    font-family: OCR A Std, monospace;
+    font-size: 20px;
+    color: white;
+    font-family: Impact, fantasy;
     padding: 60px;
     align: center;
     text-align: center;
+}
+
+
+.try-again {
+    font-family: Impact, fantasy;
+    width: 30%;
+    position:relative;
+    top:50%; 
+    left: 35%;
 }

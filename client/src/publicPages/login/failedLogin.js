@@ -7,19 +7,17 @@ import './failed.css';
 const LoginFailure = (props) => {
     return (
         <div className="failed">
-            <div>
+            <div className="failed">
                 Uh oh, we couldn't find an account under that username and password,
                 please try again or register a new account.
             </div>
-            <Button variant="outline-secondary" onClick={(() => window.location.href = '/')}>
-                Back To Home
+            <Button 
+                className="try-again"
+                block size='lg' 
+                variant="outline-light" 
+                onClick={(() => window.location.href = '/')}>
+                Try Again
             </Button>
-
-            <Link to={'/register'}>
-                <Button variant="outline-secondary">
-                    Register Account
-                </Button>
-            </Link>
         </div>
     );
 };
