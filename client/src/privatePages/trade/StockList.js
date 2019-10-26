@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
+import './StockList.css';
 
 class StockList  extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class StockList  extends React.Component {
 
     render() {
         return (
-            <Table responsive>
+            <Table responsive className="stock-table">
                 <thead>
                     <tr>
                         <th>Name (Symbol)</th>
