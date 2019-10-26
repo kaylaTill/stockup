@@ -8,17 +8,43 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 class PrivatePages extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            loggedIn: true
+        }
+        this.handleLogout = this.handleLogout.bind(this);
         
     }
+
+    componentDidMount() {
+        axios.get('/loggedIn')
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+
+    handleLogout() {
+        axios.get('/logout')
+            .then((res) => {
+                window.location.href = '/';
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+
+
 
 
 
     render() {
         return (
             <Router>
-                <div className="PrivatePages">
-                    <PrivateNav/>
-                </div>
+                    <PrivateNav handleLogout={this.handleLogout}/>
             </Router>
         );
     }
