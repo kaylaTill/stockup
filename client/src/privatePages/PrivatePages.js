@@ -2,8 +2,8 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import PrivateNav from './privateNav';
+import Trade from './trade/Trade'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
 
 class PrivatePages extends React.Component {
     constructor(props) {
@@ -12,7 +12,6 @@ class PrivatePages extends React.Component {
             loggedIn: true
         }
         this.handleLogout = this.handleLogout.bind(this);
-        
     }
 
     componentDidMount() {
@@ -44,7 +43,10 @@ class PrivatePages extends React.Component {
     render() {
         return (
             <Router>
-                    <PrivateNav handleLogout={this.handleLogout}/>
+                <PrivateNav handleLogout={this.handleLogout}/>
+                <Route exact={true} path={'/trade'}>
+                    <Trade/>
+                </Route>
             </Router>
         );
     }

@@ -44,7 +44,7 @@ const PrivateNav = ((props) => {
     return (
         < Nav >
             <NavLeft>
-                <Link to={'/dashboard'}>
+                <Link to={'/'}>
                     <NavItem> StockUP </NavItem>
                 </Link>
             </NavLeft>
@@ -53,7 +53,7 @@ const PrivateNav = ((props) => {
                 <Link to={'/trade'}>
                     <NavItem> Trade </NavItem>
                 </Link>
-                
+
                 <NavItem onClick={props.handleLogout}> Logout </NavItem>
             </NavRight>
         </Nav >
