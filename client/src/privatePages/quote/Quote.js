@@ -70,6 +70,12 @@ class Quote extends React.Component {
     handleBuy(event) {
         event.preventDefault()
         console.log(this.state.symbol);
+        this.props.buyStock(
+            this.state.symbol,
+            this.state.companyName, 
+            this.state.price, 
+            this.state.shares
+        )
     }
 g
 

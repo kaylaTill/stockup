@@ -44,4 +44,4 @@ UserStock.sync({ force: false }).then(() => {
 });
 
 
-module.exports = UserStock;
+module.exports = {UserStock};

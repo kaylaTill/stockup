@@ -39,14 +39,20 @@ class PrivatePages extends React.Component {
             });
     }
 
-    buyStock(symbol, companyName, price, shares, username) {
-        console.log('bout!');
+    buyStock(symbol, companyName, price, shares) {
+        axios.get('/buyStock', {
+            symbol: symbol,
+            companyName: companyName,
+            price: price,
+            shares: shares
+        })
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        });
     }
-
-
-
-
-
 
     render() {
         return (

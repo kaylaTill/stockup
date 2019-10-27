@@ -35,4 +35,4 @@ UserBalance.sync({ force: false }).then(() => {
 });
 
 
-module.exports = UserBalance;
+module.exports = {UserBalance};

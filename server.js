@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 const Sequelize = require('sequelize');
 const User = require('./models/users.js');
+const userBalance = require('./models/userBalance.js')
+const userstock = require('./models/userStock.js')
 const secret = '_my_Secret_String_2464582';
 const saltRounds = 10;
 
@@ -38,7 +40,6 @@ app.post('/registerUser', function (req, res, next) {
         })
         .then((user) => {
             req.session.user = user;
-            
             req.session.save((err) => {
                 if (err) {
                     console.log(err);
@@ -47,10 +48,30 @@ app.post('/registerUser', function (req, res, next) {
             })
             console.log('------ Succesful session created for new user!------');
         })
-        .catch(function (err) {
-            console.log(`Hash Error: ${err}`);
+        .then(() => {
+            user.User.findOne({
+                where: { username: req.body.username }
+            })
+            .then((result) => {
+                userBalance.UserBalance.create({ 
+                    user_balance: 5000,
+                    user_id: result.user_id
+
+                })
+            })
+            .then((res) => console.log('----- Created a balance Table for User-----'))
+
         })
+        .then((res) => {
+            res.sendStatus(200)
+        })
+        .catch((err) => {
+            console.log(`Err: ${err}`);
+        });
     })
+    .catch(function (err) {
+        console.log(`Hash Error: ${err}`);
+    });
 });
 
 
@@ -92,7 +113,6 @@ app.get('/loggedIn', function (req, res, next) {
         console.log(`-------  Succesful session for ${req.session.user} ------`);
         return res.sendStatus(200);
     } 
-    console.log(req.session.user);
     res.sendStatus(404);
 });
 
@@ -104,6 +124,44 @@ app.get('/logout', (req, res, next) => {
         }
     })
     return res.sendStatus(200);
+})
+
+
+
+
+app.post('/buyStock', (req, res, next) => {
+    // add records to userstock
+    User.User.findOne({ where: { username: req.session.user.username} })
+    .then((results) => {
+        console.log('-----Found User-----');
+        const userId = results.id
+        userstock.UserStock.create({
+            symbol: req.body.symbol,
+            companyName: req.body.companyName,
+            price: req.body.price,
+            shares: req.body.shares,
+            user_id: userId
+        })
+
+        .then((res) => {
+            const balance = userBalance.UserBalance.user_balance;
+            console.log('-----User Stock Added-----');
+            userBalance.UserBalance.update(
+                {user_balance: balance - req.body.total},
+                { where: { user_id: userId } }
+            )
+        })
+        .then(() => {
+            console.log('-----User Balance Updated-----');
+        })
+    })
+    .then((res) => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+
 })
 
 // Handles any requests that don't match the ones above
