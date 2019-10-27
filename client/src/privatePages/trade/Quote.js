@@ -100,10 +100,10 @@ class Quote extends React.Component {
                                 <tr>
                                     <td className="name">{this.state.companyName}</td>
                                     <td className="symbol">{this.state.symbol}</td>
-                                    <td className="annualHigh">{this.state.annualHigh}</td>
-                                    <td className="annualLow">{this.state.annualLow}</td>
+                                    <td className="annualHigh">{this.state.annualHigh}| usd</td>
+                                    <td className="annualLow">{this.state.annualLow}| usd</td>
                                     <td className="change">{this.state.change}</td>
-                                    <td className="latestPrice">{this.state.latestPrice}</td>
+                                    <td className="latestPrice">{this.state.latestPrice}| usd</td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -129,8 +129,15 @@ class Quote extends React.Component {
                                     value={this.state.value}
                                     onChange={this.handleChange}
                                 /> */}
-                                <NumericInput className="form-control" />
+                                <div className="share-quantity">
+                                    <NumericInput 
+                                        size={8} min={0}
+                                        value={this.state.value}
+
+                                    />
+                                </div>
                                 <Button
+                                    className="submit-buy"
                                     variant="outline-light" size="sm" block
                                 >
                                     {`Buy ${this.state.shares} shares of ${this.state.symbol} stock`}

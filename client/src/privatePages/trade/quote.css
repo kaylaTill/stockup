@@ -29,10 +29,26 @@
 
 .buy {
     font-family: Impact, fantasy;
-    width: 60%;
-    height: 15%;
+    width: 50%;
+    height: 20%;
     margin-top: 5px;
     margin-bottom: 20px;
     position:relative; 
-    left: 30%;
+    left: 25%;
+}
+
+.share-quantity {
+    margin-left: 40%;
+    width: 30%;
+}
+
+
+.submit-buy {
+    font-family: Impact, fantasy;
+    width: 50%;
+    height: 20%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    position:relative; 
+    left: 25%;
 }
