@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Collapse, Form } from 'react-bootstrap';
 import axios from 'axios';
+import NumericInput from 'react-native-numeric-input'
 import API_KEY from '../../key';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './quote.css';
@@ -11,7 +12,13 @@ class Quote extends React.Component {
         this.state = {
             value: '',
             open: false,
-            stock: ''
+            companyName: '',
+            latestPrice: 0,
+            symbol: '',
+            annualHigh: 0,
+            annualLow: 0,
+            change: 0,
+            shares: 0
         }
         this.getQuote = this.getQuote.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -20,7 +27,7 @@ class Quote extends React.Component {
 
     handleChange(event) {
         this.setState({
-            value: event.target.value
+            [event.target.name]: event.target.value,
         });
     }
 
@@ -33,11 +40,17 @@ class Quote extends React.Component {
 
     getQuote(symbol) {
         axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
-            .then((res) => {
+            .then(({data}) => {
                 this.setState({
-                    open: true
+                    open: true,
+                    companyName: data.companyName,
+                    latestPrice: data.latestPrice,
+                    symbol: data.symbol,
+                    annualHigh: data.week52High,
+                    annualLow: data.week52Low,
+                    change: data.ytdChange
                 })
-                console.log(res)
+                console.log(data)
             })
             .catch((err) => {
                 console.log(err)
@@ -71,10 +84,62 @@ class Quote extends React.Component {
         
                 <Collapse in={this.state.open}>
                     <div id="stock-info">
-                        Info On Quote
-                        <Button>
+                        <Table responsive>
+                            <thead>
+                                <tr>
+                                    <th>Company Name</th>
+                                    <th>Symbol</th>
+                                    <th>Annual High</th>
+                                    <th>Annual Low</th>
+                                    <th>Net Change</th>
+                                    <th>Latest Price</th>
+                                </tr>
+                            </thead>
+                            <tbody className="stock">
+                                <tr>
+                                    <td className="name">{this.state.companyName}</td>
+                                    <td className="symbol">{this.state.symbol}</td>
+                                    <td className="annualHigh">{this.state.annualHigh}</td>
+                                    <td className="annualLow">{this.state.annualLow}</td>
+                                    <td className="change">{this.state.change}</td>
+                                    <td className="latestPrice">{this.state.latestPrice}</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+
+
+                        <Button
+                            variant="outline-light" size="sm" block
+                            aria-controls="buy-stock"
+                            aria-expanded={this.state.open}
+                            >
                             Buy Stock
                         </Button>
+
+                        <Collapse>
+                            <Form onSubmit={this.handleBuy}>
+                                {/* <Form.Control
+                                    name="shares"
+                                    required
+                                    autoComplete="off"
+                                    placeholder="Shares"
+                                    value={this.state.value}
+                                    onChange={this.handleChange}
+                                /> */}
+                                <NumericInput name="shares" 
+                                    placeholder="Shares" 
+                                    type='up-down' 
+                                    value={this.state.shares}
+                                    onChange={this.handleChange} 
+                                />
+                                <Button
+                                    variant="outline-light" size="sm" blocl
+                                >
+                                    {`Buy ${this.state.shares} shares of ${this.state.symbol} stock`}
+                                </Button>
+                            </Form>
+                        </Collapse>
+
                     </div>
                 </Collapse>
         </div>
