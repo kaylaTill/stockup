@@ -75,9 +75,13 @@ class PrivatePages extends React.Component {
         return (
             <Router>
                 <PrivateNav handleLogout={this.handleLogout}/>
-                <div className="balance">Balance: {this.state.balance}</div>
 
                 <Switch fallback={<div></div>}>
+                    <Route exact={true} path={'/'}>
+                        <div className="balance">Balance: {this.state.balance}</div>
+                    </Route>
+
+
                     <Route exact={true} path={'/trade'}>
                         <Trade/>
                     </Route>
