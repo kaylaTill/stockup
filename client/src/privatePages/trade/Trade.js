@@ -2,10 +2,11 @@ import React from 'react';
 import StockList from './StockList';
 import axios from 'axios';
 import Quote from './Quote';
-import Buy from './Buy'
+import Buy from './Buy';
+import { Button } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './trade.css';
-import API_KEY from '../../key';
+
 
 class Trade extends React.Component {
     constructor(props) {
@@ -13,33 +14,19 @@ class Trade extends React.Component {
         this.state = {
             stocks: []
         }
-        this.getQuote = this.getQuote.bind(this);
+        
     }
-
-
-
-
-
-    getQuote(symbol) {
-        axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-        });
-
-    }
-
-   
-
 
 
 
     render() {
         return (
             <div>
-                <Quote getQuote={this.getQuote}/>
+                <Button className="quote-button"
+                    block size='sm' variant="outline-light"
+                    href={'/quote'}
+                >Quote
+                </Button>
                 <Buy/>
                 <StockList/>
             </div>

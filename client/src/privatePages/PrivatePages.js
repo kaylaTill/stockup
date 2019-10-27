@@ -2,8 +2,10 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import PrivateNav from './privateNav';
-import Trade from './trade/Trade'
+import Trade from './trade/Trade';
+import Quote from './trade/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import API_KEY from '../key';
 
 class PrivatePages extends React.Component {
     constructor(props) {
@@ -12,6 +14,7 @@ class PrivatePages extends React.Component {
             loggedIn: true
         }
         this.handleLogout = this.handleLogout.bind(this);
+        this.getQuote = this.getQuote.bind(this);
     }
 
     componentDidMount() {
@@ -35,6 +38,17 @@ class PrivatePages extends React.Component {
             });
     }
 
+    getQuote(symbol) {
+        axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+
+    }
+
 
 
 
@@ -44,9 +58,15 @@ class PrivatePages extends React.Component {
         return (
             <Router>
                 <PrivateNav handleLogout={this.handleLogout}/>
-                <Route exact={true} path={'/trade'}>
-                    <Trade/>
-                </Route>
+                <Switch fallback={<div></div>}>
+                    <Route exact={true} path={'/trade'}>
+                        <Trade/>
+                    </Route>
+
+                    <Route exact={true} path={'/quote'}>
+                        <Quote getQuote={this.getQuote} />
+                    </Route>
+                </Switch>
             </Router>
         );
     }

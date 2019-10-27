@@ -21,13 +21,13 @@ class Quote extends React.Component {
 
     render() {
         return (
-            <div>
+        <div>
             <Button className="quote-button"
                 block size='sm' variant="outline-light"
             onClick={() => {this.setState({open: !this.state.open})}}
             aria-controls="form-collapse"
             aria-expanded={this.state.open}
-            >Quote
+            >Quote Stock
             </Button>
     
     
