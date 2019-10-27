@@ -19,9 +19,7 @@ class Trade extends React.Component {
 
 
 
-    componentDidMount() {
-        this.getQuote('AAPL')
-    }
+
 
     getQuote(symbol) {
         axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
@@ -34,13 +32,15 @@ class Trade extends React.Component {
 
     }
 
+   
+
 
 
 
     render() {
         return (
             <div>
-                <Quote/>
+                <Quote getQuote={this.getQuote}/>
                 <Buy/>
                 <StockList/>
             </div>

@@ -1,18 +1,55 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Collapse, Form } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './quote.css';
 
-const Quote = ((props) => {
-    return (
-        <Button className="quote-button"
-            block size='sm' variant="outline-light"
-        // onClick={() => {this.setState({open: !this.state.open})}}
-        // aria-controls="form-collapse"
-        // aria-expanded={this.state.open}
-        >Quote
-        </Button>
-    )
-})
+class Quote extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: '',
+            open: false
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            value: event.target.value
+        });
+    }
+
+    render() {
+        return (
+            <div>
+            <Button className="quote-button"
+                block size='sm' variant="outline-light"
+            onClick={() => {this.setState({open: !this.state.open})}}
+            aria-controls="form-collapse"
+            aria-expanded={this.state.open}
+            >Quote
+            </Button>
+    
+    
+            <Collapse in={this.state.open}>
+                <div id="quote-form">
+                    <Form onSubmit={props.getQuote()}>
+                        <Form.Control
+                            name="value"
+                            placeholder="Symbol"
+                            value={this.state.value}
+                            onChange={this.handleChange}
+                        />
+                        <Button variant="outline-dark" size="lg" block
+                            type="submit">
+                            Quote
+                        </Button>
+                    </Form>
+                </div>
+            </Collapse>
+        </div>
+        )
+    }
+}
 
 export default Quote;
