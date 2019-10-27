@@ -18,7 +18,6 @@ const Trade = ((props) => {
     return (
         <div>
             <Quote/>
-            <br></br>
             <Buy/>
             <StockList/>
         </div>
