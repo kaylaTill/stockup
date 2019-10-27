@@ -12,7 +12,8 @@ class PrivatePages extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedIn: true
+            loggedIn: true,
+            stocks: []
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.buyStock = this.buyStock.bind(this);
@@ -26,6 +27,15 @@ class PrivatePages extends React.Component {
             .catch((err) => {
                 console.log(err);
             });
+
+        axios.get('/balance')
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+            
     }
 
 

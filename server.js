@@ -102,6 +102,21 @@ app.post('/login', function (req, res, next) {
         });
 });
 
+
+app.get('/balance', (req, res, next) => {
+    User.User.findOne({ where: { username: req.session.user.username } })
+        .then((result) => {
+            userBalance.UserBalance.findOne({ where: { user_id: result.id } })
+        })
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(404);
+        });
+}) 
+
 // testing cookie connection
 app.get('/loggedIn', function (req, res, next) {
     if (req.session.user) {
@@ -156,6 +171,9 @@ app.post('/buy-stock', (req, res, next) => {
         res.status(404)
     });
 })
+
+
+
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
