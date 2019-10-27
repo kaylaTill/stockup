@@ -20,7 +20,6 @@ const BuyFromQuote = ((props) => {
                             name="shares"
                             min={0}
                             max={100}
-                            placeholder={0}
                             value={props.shares > 0 && props.shares}
                             onChange={props.handleChange}
                         />
@@ -36,7 +35,7 @@ const BuyFromQuote = ((props) => {
                         variant="outline-light"
                         size="sm" block
                     >
-                        {`Buy ${props.shares} shares of ${props.symbol} stock`}
+                        {`Buy ${props.shares > 0 ? gprops.shares : 0} shares of ${props.symbol} stock`}
                     </Button>
                 </Form>
             </Collapse>

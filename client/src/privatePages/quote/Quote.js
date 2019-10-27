@@ -67,7 +67,8 @@ class Quote extends React.Component {
         this.getQuote(this.state.value)
     }
 
-    handleBuy() {
+    handleBuy(event) {
+        event.preventDefault()
         console.log(this.state.symbol);
     }
 g
