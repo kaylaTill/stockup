@@ -40,12 +40,12 @@ class PrivatePages extends React.Component {
     }
 
     buyStock(symbol, companyName, price, shares) {
-        axios.post('/buyStock', {
+        axios.post('/buy-stock', {
             symbol: symbol,
             companyName: companyName,
             price: price,
             shares: shares,
-            total: price * shares,
+            total: ((price * shares) * 1.00),
         })
         .then((res) => {
             console.log(res)

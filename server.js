@@ -54,7 +54,7 @@ app.post('/registerUser', function (req, res, next) {
             })
             .then((result) => {
                 userBalance.UserBalance.create({ 
-                    user_balance: 5000,
+                    user_balance: 5000.00,
                     user_id: result.id
                 })
             })
@@ -124,7 +124,7 @@ app.get('/logout', (req, res, next) => {
 
 
 
-app.post('/buyStock', (req, res, next) => {
+app.post('/buy-stock', (req, res, next) => {
     // add records to userstock
     User.User.findOne({ where: { username: req.session.user.username} })
     .then((results) => {
@@ -138,7 +138,7 @@ app.post('/buyStock', (req, res, next) => {
             user_id: userId
         })
         .then(() => {
-            const balance = userBalance.UserBalance.user_balance;
+            var balance = userBalance.UserBalance.user_balance;
             console.log('-----User Stock Added-----');
             userBalance.UserBalance.update(
                 {user_balance: balance - req.body.total},
@@ -149,13 +149,12 @@ app.post('/buyStock', (req, res, next) => {
             console.log(err)
         })
     })
-    .then((res) => {
-        res.sendStatus(200)
+    .then(() => {
+        res.status(200)
     })
-    .catch((err) => {
-        console.log(err);
+    .catch(() => {
+        res.status(404)
     });
-   
 })
 
 // Handles any requests that don't match the ones above

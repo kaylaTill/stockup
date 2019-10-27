@@ -3,7 +3,7 @@ const sequelize = new Sequelize('mysql://root@localhost:3306/stockup');
 
 const UserBalance = sequelize.define('userBalance', {
     user_balance: {
-        type: Sequelize.DOUBLE,
+        type: Sequelize.DECIMAL(10, 2),
         allowNull: false
 
     },
