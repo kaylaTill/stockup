@@ -34,7 +34,6 @@ class Quote extends React.Component {
     }
 
     handleIncrease(event) {
-        console.log(event.target.name)
         event.target.name == 'increase' ? this.setState({ shares: this.state.shares + 1 })  : this.setState({ shares: this.state.shares - 1 })
     }
 
