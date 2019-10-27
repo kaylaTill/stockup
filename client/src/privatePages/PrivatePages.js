@@ -39,8 +39,8 @@ class PrivatePages extends React.Component {
             });
     }
 
-    buyStock() {
-        console.log('bout');
+    buyStock(symbol, companyName, price, shares, username) {
+        console.log('bout!');
     }
 
 
@@ -58,7 +58,7 @@ class PrivatePages extends React.Component {
                     </Route>
 
                     <Route exact={true} path={'/quote'}>
-                        <Quote getQuote={this.getQuote} />
+                        <Quote getQuote={this.getQuote} buyStock={this.buyStock} />
                     </Route>
 
                     <Route exact={true} path={'/buy'}>
