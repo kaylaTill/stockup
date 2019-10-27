@@ -24,12 +24,19 @@ class Quote extends React.Component {
         this.getQuote = this.getQuote.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleIncrease = this.handleIncrease.bind(this);
     }
 
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value,
         });
+    }
+
+    handleIncrease(event) {
+        this.setState({
+            shares: event.target.value
+        })
     }
 
 
@@ -100,10 +107,10 @@ class Quote extends React.Component {
                                 <tr>
                                     <td className="name">{this.state.companyName}</td>
                                     <td className="symbol">{this.state.symbol}</td>
-                                    <td className="annualHigh">{this.state.annualHigh}| usd</td>
-                                    <td className="annualLow">{this.state.annualLow}| usd</td>
+                                    <td className="annualHigh">{this.state.annualHigh} | usd</td>
+                                    <td className="annualLow">{this.state.annualLow} | usd</td>
                                     <td className="change">{this.state.change}</td>
-                                    <td className="latestPrice">{this.state.latestPrice}| usd</td>
+                                    <td className="latestPrice">{this.state.latestPrice} | usd</td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -130,10 +137,14 @@ class Quote extends React.Component {
                                     onChange={this.handleChange}
                                 /> */}
                                 <div className="share-quantity">
-                                    <NumericInput 
-                                        size={8} min={0}
-                                        value={this.state.value}
-
+                                    <input 
+                                        type="number" 
+                                        className="input-shares" 
+                                        name="shares"
+                                        min="0" 
+                                        max="100"
+                                        value={this.state.shares}
+                                        onChange={this.handleIncrease}
                                     />
                                 </div>
                                 <Button
