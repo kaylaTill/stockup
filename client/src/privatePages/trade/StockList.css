@@ -1,3 +1,7 @@
 .stock-table {
     color: white;
 }
+
+.stock:hover {
+    background-color: #2a2a2a ;
+}

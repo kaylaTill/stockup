@@ -22,21 +22,11 @@ class StockList  extends React.Component {
                         <th>My Shares</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="stock">
                     <tr>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
-                    <tr>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                    </tr>
-                    <tr>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
+                        <td className="name">Table cell</td>
+                        <td className="price">Table cell</td>
+                        <td className="shares">Table cell</td>
                     </tr>
                 </tbody>
             </Table>
