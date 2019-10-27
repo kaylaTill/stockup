@@ -4,7 +4,7 @@ import axios from 'axios';
 import NumericInput from 'react-numeric-input';
 import API_KEY from '../../key';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './quote.css';
+import './Quote.css';
 
 class Quote extends React.Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './buy.css';
+import './Buy.css';
 
 const Buy = ((props) => {
     return (

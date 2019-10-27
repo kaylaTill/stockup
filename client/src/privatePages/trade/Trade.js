@@ -1,7 +1,7 @@
 import React from 'react';
 import StockList from '../stocks/StockList';
 import axios from 'axios';
-import Buy from '..buy/Buy';
+import Buy from '../buy/Buy';
 import { Button } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './trade.css';
