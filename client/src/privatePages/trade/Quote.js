@@ -34,9 +34,8 @@ class Quote extends React.Component {
     }
 
     handleIncrease(event) {
-        this.setState({
-            shares: event.target.value
-        })
+        console.log(event.target.name)
+        event.target.name == 'increase' ? this.setState({ shares: this.state.shares + 1 })  : this.setState({ shares: this.state.shares - 1 })
     }
 
 
@@ -137,15 +136,17 @@ class Quote extends React.Component {
                                     onChange={this.handleChange}
                                 /> */}
                                 <div className="share-quantity">
+                                    <Button variant="outline-light" size="sm" name="decrease" className="change-value" onClick={this.handleIncrease} >-</Button>
                                     <input 
                                         type="number" 
-                                        className="input-shares" 
+                                        className="share-quantity" 
                                         name="shares"
-                                        min="0" 
+                                        min={0}
                                         max="100"
                                         value={this.state.shares}
                                         onChange={this.handleIncrease}
                                     />
+                                    <Button variant="outline-light" size="sm" name="increase" className="change-value" onClick={this.handleIncrease} >+</Button>
                                 </div>
                                 <Button
                                     className="submit-buy"

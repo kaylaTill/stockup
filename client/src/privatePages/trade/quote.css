@@ -34,13 +34,33 @@
     margin-top: 5px;
     margin-bottom: 20px;
     position:relative; 
+
     left: 25%;
 }
 
+.share-quantity:focus {outline:none}
 .share-quantity {
-    margin-left: 45%;
+    text-align: center;
+    position: relative;
+    left: 20%;
     width: 40%;
+    height: 20%;
+    border-radius: 15px;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.change-value {
+    border-radius: 20%;
+    margin-left: 0px;
+    margin-right: 5px;
+    font-family: Impact, fantasy;
+}
+
 
 
 .submit-buy {
