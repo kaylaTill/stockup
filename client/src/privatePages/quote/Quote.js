@@ -25,6 +25,7 @@ class Quote extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleShareUpdate = this.handleShareUpdate.bind(this);
+        this.clearForm = this.clearForm.bind(this);
     }
 
     handleChange(event) {
@@ -41,7 +42,13 @@ class Quote extends React.Component {
     handleSubmit(event) {
         event.preventDefault()
         this.getQuote(this.state.value)
+    }
 
+
+    clearForm() {
+        this.setState({
+            value: '' 
+        })
     }
 
     getQuote(symbol) {
@@ -57,6 +64,9 @@ class Quote extends React.Component {
                     change: data.ytdChange
                 })
                 console.log(data)
+            })
+            .then(() => {
+                this.clearForm()
             })
             .catch((err) => {
                 console.log(err)
@@ -129,7 +139,12 @@ class Quote extends React.Component {
                         <Collapse id="buy-stock" in={this.state.buyStockOpen}>
                             <Form onSubmit={this.handleBuy}>
                                 <div>
-                                    <Button variant="outline-light" size="sm" name="decrease" className="decrease" onClick={this.handleShareUpdate} >-</Button>
+                                    <Button variant="outline-light" 
+                                    size="sm"
+                                    name="decrease"
+                                    className="decrease" 
+                                    onClick={this.handleShareUpdate}>
+                                    -</Button>
                                     <input 
                                         type="number" 
                                         className="share-quantity" 
@@ -139,11 +154,16 @@ class Quote extends React.Component {
                                         value={this.state.shares > 0 ? this.state.shares : 0}
                                         onChange={this.handleShareUpdate}
                                     />
-                                    <Button variant="outline-light" size="sm" name="increase" className="increase" onClick={this.handleShareUpdate} >+</Button>
+                                    <Button variant="outline-light" 
+                                        size="sm" name="increase"
+                                        className="increase" 
+                                        onClick={this.handleShareUpdate} >
+                                    +</Button>
                                 </div>
                                 <Button
                                     className="submit-buy"
-                                    variant="outline-light" size="sm" block
+                                    variant="outline-light" 
+                                    size="sm" block
                                 >
                                     {`Buy ${this.state.shares} shares of ${symbol} stock`}
                                 </Button>
