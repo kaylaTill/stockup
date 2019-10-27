@@ -127,16 +127,8 @@ class Quote extends React.Component {
 
                         <Collapse id="buy-stock" in={this.state.buyStockOpen}>
                             <Form onSubmit={this.handleBuy}>
-                                {/* <Form.Control
-                                    name="shares"
-                                    required
-                                    autoComplete="off"
-                                    placeholder="Shares"
-                                    value={this.state.value}
-                                    onChange={this.handleChange}
-                                /> */}
-                                <div className="share-quantity">
-                                    <Button variant="outline-light" size="sm" name="decrease" className="change-value" onClick={this.handleIncrease} >-</Button>
+                                <div>
+                                    <Button variant="outline-light" size="sm" name="decrease" className="decrease" onClick={this.handleIncrease} >-</Button>
                                     <input 
                                         type="number" 
                                         className="share-quantity" 
@@ -146,7 +138,7 @@ class Quote extends React.Component {
                                         value={this.state.shares}
                                         onChange={this.handleIncrease}
                                     />
-                                    <Button variant="outline-light" size="sm" name="increase" className="change-value" onClick={this.handleIncrease} >+</Button>
+                                    <Button variant="outline-light" size="sm" name="increase" className="increase" onClick={this.handleIncrease} >+</Button>
                                 </div>
                                 <Button
                                     className="submit-buy"

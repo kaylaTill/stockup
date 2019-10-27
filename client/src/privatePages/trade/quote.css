@@ -34,7 +34,6 @@
     margin-top: 5px;
     margin-bottom: 20px;
     position:relative; 
-
     left: 25%;
 }
 
@@ -42,9 +41,9 @@
 .share-quantity {
     text-align: center;
     position: relative;
-    left: 20%;
-    width: 40%;
-    height: 20%;
+    left: 40%;
+    width: 20%;
+    height: 40%;
     border-radius: 15px;
 }
 
@@ -54,11 +53,23 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
-.change-value {
+.increase {
     border-radius: 20%;
-    margin-left: 0px;
-    margin-right: 5px;
+    padding-left: 5px;
+    width: 5%;
+    padding-right: 5px;
     font-family: Impact, fantasy;
+    position: relative;
+    left: 60%;
+}
+.decrease {
+    border-radius: 20%;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 5%;
+    font-family: Impact, fantasy;
+    position: relative;
+    left: 20%;
 }
 
 
