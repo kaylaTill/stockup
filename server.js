@@ -49,14 +49,13 @@ app.post('/registerUser', function (req, res, next) {
             console.log('------ Succesful session created for new user!------');
         })
         .then(() => {
-            user.User.findOne({
+            User.User.findOne({
                 where: { username: req.body.username }
             })
             .then((result) => {
                 userBalance.UserBalance.create({ 
                     user_balance: 5000,
-                    user_id: result.user_id
-
+                    user_id: result.id
                 })
             })
             .then((res) => console.log('----- Created a balance Table for User-----'))
@@ -69,9 +68,6 @@ app.post('/registerUser', function (req, res, next) {
             console.log(`Err: ${err}`);
         });
     })
-    .catch(function (err) {
-        console.log(`Hash Error: ${err}`);
-    });
 });
 
 
