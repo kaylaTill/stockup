@@ -40,7 +40,7 @@ class Quote extends React.Component {
                             value={this.state.value}
                             onChange={this.handleChange}
                         />
-                        <Button variant="outline-dark" size="lg" block
+                        <Button className="quote-button" variant="outline-light" size="sm" block
                             type="submit">
                             Quote
                         </Button>

@@ -7,3 +7,14 @@
     position:relative; 
     left: 80%;
 }
+
+#quote-form {
+    font-family: Impact, fantasy;
+    text-align: center;
+    width: 30%;
+    height: 20%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    position:relative; 
+    left: 50%;
+}
