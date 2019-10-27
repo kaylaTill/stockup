@@ -21,17 +21,7 @@ class Quote extends React.Component {
 
     render() {
         return (
-        <div>
-            <Button className="quote-button"
-                block size='sm' variant="outline-light"
-            onClick={() => {this.setState({open: !this.state.open})}}
-            aria-controls="form-collapse"
-            aria-expanded={this.state.open}
-            >Quote Stock
-            </Button>
-    
-    
-            <Collapse in={this.state.open}>
+            <div>
                 <div id="quote-form">
                     <Form onSubmit={this.props.getQuote(this.state.value)}>
                         <Form.Control
@@ -40,16 +30,28 @@ class Quote extends React.Component {
                             value={this.state.value}
                             onChange={this.handleChange}
                         />
-                        <Button className="quote-button" variant="outline-light" size="sm" block
+                        <Button className="quote-button" 
+                            variant="outline-light" size="sm" block
+                            aria-controls="stock-info"
+                            aria-expanded={this.state.open}
                             type="submit">
-                            Quote
-                        </Button>
+                            {
+                                `Quote ${this.state.value}`
+                        }</Button>
                     </Form>
                 </div>
-            </Collapse>
+        
+        
+                <Collapse in={this.state.open}>
+                    <div id="stock-info">
+                        Info On Quote
+                        <Button>
+                            Buy Stock
+                        </Button>
+                    </div>
+                </Collapse>
         </div>
-        )
-    }
+    )}
 }
 
 export default Quote;
