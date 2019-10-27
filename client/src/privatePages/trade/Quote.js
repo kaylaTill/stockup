@@ -33,7 +33,7 @@ class Quote extends React.Component {
     
             <Collapse in={this.state.open}>
                 <div id="quote-form">
-                    <Form onSubmit={props.getQuote()}>
+                    <Form onSubmit={this.props.getQuote(this.state.value)}>
                         <Form.Control
                             name="value"
                             placeholder="Symbol"

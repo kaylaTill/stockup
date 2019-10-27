@@ -6,7 +6,6 @@ import Buy from './Buy'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './trade.css';
 import API_KEY from '../../key';
-import { symbol } from 'prop-types';
 
 class Trade extends React.Component {
     constructor(props) {
