@@ -94,7 +94,7 @@ app.post('/login', function (req, res, next) {
                             res.send('Logged In');
                         });
                     } else {
-                        res.sendStatus(401);
+                        res.sendStatus(404);
                         console.log('------Incorrect password, Please try again!----');
                     }
                 });
@@ -103,29 +103,12 @@ app.post('/login', function (req, res, next) {
 });
 
 
-app.get('/balance', (req, res, next) => {
-    User.User.findOne({ where: { username: req.session.user.username } })
-        .then((result) => {
-            console.log('----found user-----');
-            userBalance.UserBalance.findOne({ where: { user_id: result.id } })
-                .then((balance) => {
-                    console.log(balance.user_balance);
-                    res.json(balance.user_balance);
-                })
-        })
-        .catch((err) => {
-            console.log(err);
-            res.sendStatus(404);
-        });
-        
-}) 
-
 // testing cookie connection
 app.get('/loggedIn', function (req, res, next) {
     if (req.session.user) {
         console.log(`-------  Succesful session for ${req.session.user} ------`);
         return res.sendStatus(200);
-    } 
+    }
     res.sendStatus(404);
 });
 
@@ -137,9 +120,25 @@ app.get('/logout', (req, res, next) => {
         }
     })
     return res.sendStatus(200);
+});
+
+
+
+app.get('/balance', (req, res, next) => {
+    User.User.findOne({ where: { username: req.session.user.username } })
+        .then((result) => {
+            userBalance.UserBalance.findOne({ where: { user_id: result.id } })
+                .then((balance) => {
+                    console.log(balance.user_balance);
+                    res.json(balance.user_balance);
+                })
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(404);
+        });
+        
 })
-
-
 
 
 app.post('/buy-stock', (req, res, next) => {
@@ -156,10 +155,9 @@ app.post('/buy-stock', (req, res, next) => {
             user_id: userId
         })
         .then(() => {
-            var balance = userBalance.UserBalance.user_balance;
             console.log('-----User Stock Added-----');
             userBalance.UserBalance.update(
-                {user_balance: balance - req.body.total},
+                {user_balance: req.body.balance},
                 { where: { user_id: userId } }
             )
         })
@@ -167,12 +165,13 @@ app.post('/buy-stock', (req, res, next) => {
             console.log(err)
         })
     })
-    .then(() => {
-        res.status(200)
-    })
     .catch(() => {
         res.status(404)
     });
+
+
+
+
 })
 
 

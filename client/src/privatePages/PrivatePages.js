@@ -13,7 +13,8 @@ class PrivatePages extends React.Component {
         super(props)
         this.state = {
             loggedIn: true,
-            stocks: []
+            stocks: [],
+            balance: 0.00
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.buyStock = this.buyStock.bind(this);
@@ -29,8 +30,11 @@ class PrivatePages extends React.Component {
             });
 
         axios.get('/balance')
-            .then((res) => {
-                console.log(res)
+            .then(({data}) => {
+                console.log(data)
+                this.setState({
+                    balance: data
+                })
             })
             .catch((err) => {
                 console.log(err)
@@ -69,6 +73,8 @@ class PrivatePages extends React.Component {
         return (
             <Router>
                 <PrivateNav handleLogout={this.handleLogout}/>
+                <div className="balance">Balance: {this.state.balance}</div>
+                
                 <Switch fallback={<div></div>}>
                     <Route exact={true} path={'/trade'}>
                         <Trade/>
