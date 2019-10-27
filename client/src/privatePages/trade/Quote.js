@@ -12,6 +12,7 @@ class Quote extends React.Component {
         this.state = {
             value: '',
             open: false,
+            buyStockOpen: false,  
             companyName: '',
             latestPrice: 0,
             symbol: '',
@@ -84,7 +85,7 @@ class Quote extends React.Component {
         
                 <Collapse in={this.state.open}>
                     <div id="stock-info">
-                        <Table responsive>
+                        <Table className="table"responsive>
                             <thead>
                                 <tr>
                                     <th>Company Name</th>
@@ -109,14 +110,16 @@ class Quote extends React.Component {
 
 
                         <Button
+                            className="buy"
                             variant="outline-light" size="sm" block
                             aria-controls="buy-stock"
-                            aria-expanded={this.state.open}
+                            aria-expanded={this.state.buyStockOpen}
+                            onClick={(() => this.setState({buyStockOpen: !this.state.buyStockOpen}))}
                             >
                             Buy Stock
                         </Button>
 
-                        <Collapse>
+                        <Collapse id="buy-stock" in={this.state.buyStockOpen}>
                             <Form onSubmit={this.handleBuy}>
                                 {/* <Form.Control
                                     name="shares"
