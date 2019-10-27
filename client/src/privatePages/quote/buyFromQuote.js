@@ -20,8 +20,9 @@ const BuyFromQuote = ((props) => {
                             name="shares"
                             min={0}
                             max={100}
-                            value={props.shares > 0 ? props.shares : 0}
-                            onChange={props.handleShareUpdate}
+                            placeholder={0}
+                            value={props.shares > 0 && props.shares}
+                            onChange={props.handleChange}
                         />
                         <Button variant="outline-light"
                             size="sm" name="increase"

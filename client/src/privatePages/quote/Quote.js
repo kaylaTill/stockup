@@ -143,8 +143,10 @@ g
                             <BuyFromQuote symbol={symbol}
                                 open={this.state.buyStockOpen}
                                 handleShareUpdate={this.handleShareUpdate} 
+                                handleChange={this.handleChange}
                                 shares={this.state.shares}
-                                handleBuy={this.handleBuy}/>
+                                handleBuy={this.handleBuy}
+                                />
                         </div>
                     </div>
                 </Collapse>
