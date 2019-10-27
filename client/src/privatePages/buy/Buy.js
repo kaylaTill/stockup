@@ -6,6 +6,14 @@ import './Buy.css';
 const Buy = ((props) => {
     return (
         <div>
+            
+            <Button className="quote-from-buy"
+                block size='sm' variant="outline-light"
+                href={'/quote'}
+                >Quote
+            </Button>
+
+            {/* COLLAPSE => SHOW BUY FORM -> TAKE FROM QUOTE */}
             <Button className="buy-button"
                 block size='sm' variant="outline-light"
                 // onClick={() => {this.setState({open: !this.state.open})}}
@@ -15,16 +23,6 @@ const Buy = ((props) => {
             </Button>
 
 
-            {/* COLLAPSE => SHOW BUY FORM -> TAKE FROM QUOTE */}
-            
-            <Button className="quote-from-buy"
-                block size='sm' variant="outline-light"
-                href={'/quote'}
-                // onClick={() => {this.setState({open: !this.state.open})}}
-                // aria-controls="form-collapse"
-                // aria-expanded={this.state.open}
-            >Quote
-            </Button>
         </div>
         
     )

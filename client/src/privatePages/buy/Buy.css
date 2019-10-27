@@ -1,19 +1,20 @@
 .buy-button {
     font-family: Impact, fantasy;
-    width: 20%;
-    height: 10%;
+    font-size: 15px;
+    width: 30%;
+    height: 25%;
     margin-top: 15px;
     margin-bottom: 20px;
     position:relative; 
-    left: 45%;
+    left: 35%;
 }
 .quote-from-buy {
-     font-family: Impact, fantasy;
-    width: 20%;
-    height: 10%;
+    font-family: Impact, fantasy;
+    font-size: 15px;
+    width: 30%;
+    height: 25%;
     margin-top: 15px;
     margin-bottom: 20px;
     position:relative; 
-    left: 45%;
-
+    left: 35%;
 }

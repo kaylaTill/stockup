@@ -55,7 +55,11 @@ class PrivatePages extends React.Component {
     }
 
     buyStock(symbol, companyName, price, shares) {
-        console.log(this.state.balance - ((price * shares) * 1.00))
+        // const testPrice = 5.35
+        // const testShares = 3
+        // console.log(this.state.balance - ((testPrice * testShares) * 1.00))
+
+        // console.log(this.state.balance - ((price * shares) * 1.00))
         // axios.post('/buy-stock', {
         //     symbol: symbol,
         //     companyName: companyName,
@@ -78,12 +82,12 @@ class PrivatePages extends React.Component {
 
                 <Switch fallback={<div></div>}>
                     <Route exact={true} path={'/'}>
-                        <div className="balance">Balance: {this.state.balance}</div>
+                        
                     </Route>
 
 
                     <Route exact={true} path={'/trade'}>
-                        <Trade/>
+                        <Trade balance={this.state.balance}/>
                     </Route>
 
                     <Route exact={true} path={'/quote'}>

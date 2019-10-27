@@ -21,6 +21,7 @@ class Trade extends React.Component {
     render() {
         return (
             <div className="dashboard">
+                {/* <div className="balance">Balance: {this.props.balance}</div> */}
                 <Button className="to-quote-button"
                     block size='sm' variant="outline-light"
                     href={'/quote'}
@@ -33,7 +34,7 @@ class Trade extends React.Component {
                 > Buy Stock
                 </Button>
 
-                <StockList/>
+                <StockList balance={this.props.balance}/>
             </div>
         )
     }

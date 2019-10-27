@@ -17,16 +17,20 @@ class StockList  extends React.Component {
             <Table responsive className="stock-table">
                 <thead>
                     <tr>
-                        <th>Name (Symbol)</th>
+                        <th>Name</th>
+                        <th>Symbol</th>
                         <th>Price Per Share</th>
-                        <th>My Shares</th>
+                        <th>Total Shares</th>
+                        <th>Balance</th>
                     </tr>
                 </thead>
                 <tbody className="stock">
                     <tr>
                         <td className="name">Table cell</td>
+                        <td className="symbol">Table cell</td>
                         <td className="price">Table cell</td>
                         <td className="shares">Table cell</td>
+                        <td className="balance">{this.props.balance}</td>
                     </tr>
                 </tbody>
             </Table>
