@@ -14,7 +14,6 @@ class PrivatePages extends React.Component {
             loggedIn: true
         }
         this.handleLogout = this.handleLogout.bind(this);
-        this.getQuote = this.getQuote.bind(this);
     }
 
     componentDidMount() {
@@ -36,17 +35,6 @@ class PrivatePages extends React.Component {
             .catch((err) => {
                 console.log(err);
             });
-    }
-
-    getQuote(symbol) {
-        axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
-            .then((res) => {
-                console.log(res)
-            })
-            .catch((err) => {
-                console.log(err)
-            });
-
     }
 
 

@@ -22,7 +22,7 @@ class Trade extends React.Component {
     render() {
         return (
             <div>
-                <Button className="quote-button"
+                <Button className="quote"
                     block size='sm' variant="outline-light"
                     href={'/quote'}
                 >Quote

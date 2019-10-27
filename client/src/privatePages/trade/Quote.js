@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Collapse, Form } from 'react-bootstrap';
+import axios from 'axios';
+import API_KEY from '../../key';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './quote.css';
 
@@ -8,9 +10,12 @@ class Quote extends React.Component {
         super(props);
         this.state = {
             value: '',
-            open: false
+            open: false,
+            stock: ''
         }
+        this.getQuote = this.getQuote.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(event) {
@@ -19,13 +24,32 @@ class Quote extends React.Component {
         });
     }
 
+
+    handleSubmit(event) {
+        event.preventDefault()
+        this.getQuote(this.state.value)
+
+    }
+
+    getQuote(symbol) {
+        axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }
+
+
     render() {
         return (
             <div>
-                <div id="quote-form">
-                    <Form onSubmit={this.props.getQuote(this.state.value)}>
+                <div className="quote-form">
+                    <Form onSubmit={this.handleSubmit}>
                         <Form.Control
                             name="value"
+                            autoComplete="off"
                             placeholder="Symbol"
                             value={this.state.value}
                             onChange={this.handleChange}
