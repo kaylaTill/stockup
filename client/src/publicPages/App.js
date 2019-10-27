@@ -13,7 +13,6 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-
     this.handleRegister = this.handleRegister.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
   }

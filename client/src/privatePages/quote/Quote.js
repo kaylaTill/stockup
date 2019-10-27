@@ -73,11 +73,10 @@ class Quote extends React.Component {
         this.props.buyStock(
             this.state.symbol,
             this.state.companyName, 
-            this.state.price, 
+            this.state.latestPrice, 
             this.state.shares
         )
     }
-g
 
     clearForm() {
         this.setState({

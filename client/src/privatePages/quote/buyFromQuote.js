@@ -35,7 +35,7 @@ const BuyFromQuote = ((props) => {
                         variant="outline-light"
                         size="sm" block
                     >
-                        {`Buy ${props.shares > 0 ? gprops.shares : 0} shares of ${props.symbol} stock`}
+                        {`Buy ${props.shares > 0 ? props.shares : 0} shares of ${props.symbol} stock`}
                     </Button>
                 </Form>
             </Collapse>
