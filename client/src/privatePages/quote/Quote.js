@@ -67,8 +67,8 @@ class Quote extends React.Component {
         this.getQuote(this.state.value)
     }
 
-    handleBuy(symbol) {
-        console.log(this.state.symbol)
+    handleBuy() {
+        console.log(this.state.symbol);
     }
 g
 
@@ -131,24 +131,21 @@ g
                             </tbody>
                         </Table>
 
+                        <div>
+                            <Button
+                                className="buy"
+                                variant="outline-light" size="sm" block
+                                aria-controls="buy-stock"
+                                aria-expanded={this.state.buyStockOpen}
+                                onClick={(() => this.setState({ buyStockOpen: !this.state.buyStockOpen }))}
+                            > Buy Stock</Button>
 
-                        <Button
-                            className="buy"
-                            variant="outline-light" size="sm" block
-                            aria-controls="buy-stock"
-                            aria-expanded={this.state.buyStockOpen}
-                            onClick={(() => this.setState({buyStockOpen: !this.state.buyStockOpen}))}
-                            >
-                            Buy Stock
-                        </Button>
-
-                        <Collapse id="buy-stock" in={this.state.buyStockOpen}>
-                           <BuyFromQuote symbol={symbol}
+                            <BuyFromQuote symbol={symbol}
+                                open={this.state.buyStockOpen}
                                 handleShareUpdate={this.handleShareUpdate} 
                                 shares={this.state.shares}
                                 handleBuy={this.handleBuy}/>
-                        </Collapse>
-
+                        </div>
                     </div>
                 </Collapse>
         </div>
