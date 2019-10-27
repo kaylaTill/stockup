@@ -20,17 +20,17 @@ class Trade extends React.Component {
 
     render() {
         return (
-            <div>
-                <Button className="quote"
+            <div className="dashboard">
+                <Button className="to-quote-button"
                     block size='sm' variant="outline-light"
                     href={'/quote'}
                 > Quote
                 </Button>
 
-                <Button className="buy"
+                <Button className="to-buy-button"
                     block size='sm' variant="outline-light"
                     href={'/buy'}
-                > Buy
+                > Buy Stock
                 </Button>
 
                 <StockList/>
