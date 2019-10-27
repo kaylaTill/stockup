@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 // import Logo from '../stockUP-logo-white.png';
 import Register from './registration/registration';
-import RegisterSuccess from './registration/successRegistration';
+// import RegisterSuccess from './registration/successRegistration';
 import Login from './login/login'
 import axios from 'axios';
 import LoginFailure from './login/failedLogin';
@@ -69,10 +69,6 @@ class App extends React.Component {
             <Switch>
               <Route exact={true} path={'/login-failed'}>
                 <LoginFailure/>
-              </Route>
-
-              <Route exact={true} path={'/success'}>
-                <RegisterSuccess/>
               </Route>
             </Switch>
           </Suspense>

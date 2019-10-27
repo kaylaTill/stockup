@@ -59,7 +59,6 @@ app.post('/registerUser', function (req, res, next) {
                 })
             })
             .then((res) => console.log('----- Created a balance Table for User-----'))
-
         })
         .then((res) => {
             res.sendStatus(200)
