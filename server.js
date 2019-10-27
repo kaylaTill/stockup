@@ -106,15 +106,18 @@ app.post('/login', function (req, res, next) {
 app.get('/balance', (req, res, next) => {
     User.User.findOne({ where: { username: req.session.user.username } })
         .then((result) => {
+            console.log('----found user-----');
             userBalance.UserBalance.findOne({ where: { user_id: result.id } })
-        })
-        .then(() => {
-            res.sendStatus(200);
+                .then((balance) => {
+                    console.log(balance.user_balance);
+                    res.json(balance.user_balance);
+                })
         })
         .catch((err) => {
             console.log(err);
             res.sendStatus(404);
         });
+        
 }) 
 
 // testing cookie connection
