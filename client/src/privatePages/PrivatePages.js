@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import PrivateNav from './privateNav';
 import Trade from './trade/Trade';
-import Quote from './trade/Quote';
+import Quote from './quote/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import API_KEY from '../key';
 
