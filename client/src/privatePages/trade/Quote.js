@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Collapse, Form } from 'react-bootstrap';
+import { Button, Collapse, Form, Table } from 'react-bootstrap';
 import axios from 'axios';
-import NumericInput from 'react-native-numeric-input'
+import NumericInput from 'react-numeric-input';
 import API_KEY from '../../key';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './quote.css';
@@ -126,14 +126,9 @@ class Quote extends React.Component {
                                     value={this.state.value}
                                     onChange={this.handleChange}
                                 /> */}
-                                <NumericInput name="shares" 
-                                    placeholder="Shares" 
-                                    type='up-down' 
-                                    value={this.state.shares}
-                                    onChange={this.handleChange} 
-                                />
+                                <NumericInput className="form-control" />
                                 <Button
-                                    variant="outline-light" size="sm" blocl
+                                    variant="outline-light" size="sm" block
                                 >
                                     {`Buy ${this.state.shares} shares of ${this.state.symbol} stock`}
                                 </Button>
