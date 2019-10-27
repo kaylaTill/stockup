@@ -7,3 +7,13 @@
     position:relative; 
     left: 45%;
 }
+
+.buy {
+    font-family: Impact, fantasy;
+    width: 20%;
+    height: 10%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    position:relative; 
+    left: 45%;
+}

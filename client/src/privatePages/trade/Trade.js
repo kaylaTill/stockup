@@ -24,9 +24,15 @@ class Trade extends React.Component {
                 <Button className="quote"
                     block size='sm' variant="outline-light"
                     href={'/quote'}
-                >Quote
+                > Quote
                 </Button>
-                <Buy/>
+
+                <Button className="buy"
+                    block size='sm' variant="outline-light"
+                    href={'/buy'}
+                > Buy
+                </Button>
+
                 <StockList/>
             </div>
         )

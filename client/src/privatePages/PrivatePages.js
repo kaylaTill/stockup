@@ -14,6 +14,7 @@ class PrivatePages extends React.Component {
             loggedIn: true
         }
         this.handleLogout = this.handleLogout.bind(this);
+        this.buyStock = this.buyStock.bind(this);
     }
 
     componentDidMount() {
@@ -37,6 +38,10 @@ class PrivatePages extends React.Component {
             });
     }
 
+    buyStock() {
+        console.log('bout');
+    }
+
 
 
 
@@ -53,6 +58,10 @@ class PrivatePages extends React.Component {
 
                     <Route exact={true} path={'/quote'}>
                         <Quote getQuote={this.getQuote} />
+                    </Route>
+
+                    <Route exact={true} path={'/buy'}>
+                        <Buy buyStock={this.buyStock}/>
                     </Route>
                 </Switch>
             </Router>
