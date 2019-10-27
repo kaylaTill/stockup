@@ -34,6 +34,9 @@ class Quote extends React.Component {
     getQuote(symbol) {
         axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
             .then((res) => {
+                this.setState({
+                    open: true
+                })
                 console.log(res)
             })
             .catch((err) => {
