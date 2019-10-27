@@ -6,6 +6,7 @@ import Trade from './trade/Trade';
 import Buy from './buy/Buy';
 import Quote from './quote/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import  './PrivatePages.css';
 import API_KEY from '../key';
 
 class PrivatePages extends React.Component {
@@ -74,7 +75,7 @@ class PrivatePages extends React.Component {
             <Router>
                 <PrivateNav handleLogout={this.handleLogout}/>
                 <div className="balance">Balance: {this.state.balance}</div>
-                
+
                 <Switch fallback={<div></div>}>
                     <Route exact={true} path={'/trade'}>
                         <Trade/>
