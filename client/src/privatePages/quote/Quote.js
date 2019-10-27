@@ -24,7 +24,7 @@ class Quote extends React.Component {
         this.getQuote = this.getQuote.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleIncrease = this.handleIncrease.bind(this);
+        this.handleShareUpdate = this.handleShareUpdate.bind(this);
     }
 
     handleChange(event) {
@@ -33,7 +33,7 @@ class Quote extends React.Component {
         });
     }
 
-    handleIncrease(event) {
+    handleShareUpdate(event) {
         event.target.name == 'increase' ? this.setState({ shares: this.state.shares + 1 })  : this.setState({ shares: this.state.shares - 1 })
     }
 
@@ -65,6 +65,8 @@ class Quote extends React.Component {
 
 
     render() {
+        const symbol = this.state.symbol.toUpperCase();
+        const val = this.state.value.toUpperCase();
         return (
             <div>
                 <div className="quote-form">
@@ -82,7 +84,7 @@ class Quote extends React.Component {
                             aria-expanded={this.state.open}
                             type="submit">
                             {
-                                `Quote ${this.state.value}`
+                                `Quote ${val}`
                         }</Button>
                     </Form>
                 </div>
@@ -104,7 +106,7 @@ class Quote extends React.Component {
                             <tbody className="stock">
                                 <tr>
                                     <td className="name">{this.state.companyName}</td>
-                                    <td className="symbol">{this.state.symbol}</td>
+                                    <td className="symbol">{symbol}</td>
                                     <td className="annualHigh">{this.state.annualHigh} | usd</td>
                                     <td className="annualLow">{this.state.annualLow} | usd</td>
                                     <td className="change">{this.state.change}</td>
@@ -127,23 +129,23 @@ class Quote extends React.Component {
                         <Collapse id="buy-stock" in={this.state.buyStockOpen}>
                             <Form onSubmit={this.handleBuy}>
                                 <div>
-                                    <Button variant="outline-light" size="sm" name="decrease" className="decrease" onClick={this.handleIncrease} >-</Button>
+                                    <Button variant="outline-light" size="sm" name="decrease" className="decrease" onClick={this.handleShareUpdate} >-</Button>
                                     <input 
                                         type="number" 
                                         className="share-quantity" 
                                         name="shares"
                                         min={0}
-                                        max="100"
-                                        value={this.state.shares}
-                                        onChange={this.handleIncrease}
+                                        max={100}
+                                        value={this.state.shares > 0 ? this.state.shares : 0}
+                                        onChange={this.handleShareUpdate}
                                     />
-                                    <Button variant="outline-light" size="sm" name="increase" className="increase" onClick={this.handleIncrease} >+</Button>
+                                    <Button variant="outline-light" size="sm" name="increase" className="increase" onClick={this.handleShareUpdate} >+</Button>
                                 </div>
                                 <Button
                                     className="submit-buy"
                                     variant="outline-light" size="sm" block
                                 >
-                                    {`Buy ${this.state.shares} shares of ${this.state.symbol} stock`}
+                                    {`Buy ${this.state.shares} shares of ${symbol} stock`}
                                 </Button>
                             </Form>
                         </Collapse>
