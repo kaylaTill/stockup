@@ -2,12 +2,11 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize('mysql://root@localhost:3306/stockup');
 
 const UserStock = sequelize.define('userStock', {
-
     symbol: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    stockName: {
+    companyName: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -16,10 +15,6 @@ const UserStock = sequelize.define('userStock', {
         allowNull: false
     },
     shares: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
-    user_balance: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
