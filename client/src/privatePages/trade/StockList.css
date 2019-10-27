@@ -1,6 +1,7 @@
 .stock-table {
     color: white;
     text-align: center;
+    font-family: Impact, fantasy;
 }
 
 .stock:hover {
