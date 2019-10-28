@@ -14,7 +14,7 @@ class StockListItem extends React.Component {
         console.log(this.props.stock)
         const { stock } = this.props;
         return (
-            <tr>
+            <tr className="stock-item">
                 <td className="company-name">{stock.companyName}</td>
                 <td className="symbol-table">{stock.symbol}</td>
                 <td className="price">{stock.price}</td>
