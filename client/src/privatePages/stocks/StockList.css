@@ -1,9 +1,12 @@
 .stock-table {
     color: white;
-    text-align: center;
+    /* text-align: right; */
     font-family: Impact, fantasy;
 }
 
+.stock-item {
+    text-align: center;
+} 
 .stock-item:hover {
     background-color: #2a2a2a ;
 }

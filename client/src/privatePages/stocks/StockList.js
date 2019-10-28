@@ -19,13 +19,6 @@ const StockList  = ((props) => {
             <tbody className="stock">
                 {props.stocks.map((stock) => {
                     return (
-                        // <tr>
-                        //     <td className="company-name">{stock.companyName}</td>
-                        //     <td className="symbol-table">{stock.symbol}</td>
-                        //     <td className="price">{stock.price}</td>
-                        //     <td className="total-shares">{stock.shares}</td>
-                        //     <td className="total-price">{stock.shares * stock.price}</td>
-                        // </tr>
                         <StockListItem stock={stock}/>
                     )
                 })}
