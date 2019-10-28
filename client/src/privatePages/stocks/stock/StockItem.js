@@ -79,7 +79,7 @@ class StockListItem extends React.Component {
                     <td className="symbol-table">{stock.symbol}</td>
                     <td className="price">{stock.price}</td>
                     <td className="total-shares">{stock.shares}</td>
-                    <td className="total-price">{stock.shares * stock.price}</td>
+                    <td className="total-price">{(stock.shares * stock.price).toFixed(2)}</td>
                 </tr>
                 <Collapse in={this.state.itemOpen}>
                     <div id="item-info">

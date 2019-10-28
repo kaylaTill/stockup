@@ -1,4 +1,7 @@
 .congrats {
     width: 60%;
     height: 30%;
+    font-family: Impact, fantasy;
+    font-size: 20px;
+    position: center;
 }

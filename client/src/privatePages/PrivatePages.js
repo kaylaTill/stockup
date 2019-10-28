@@ -60,7 +60,6 @@ class PrivatePages extends React.Component {
 
     buyStock(symbol, companyName, price, shares, updateShares = 0) {
         console.log(this.state.balance - ((price * shares) * 1.00))
-        console.log(updateShares);
         axios.post('/buy-stock', {
             symbol: symbol,
             companyName: companyName,
@@ -125,7 +124,7 @@ class PrivatePages extends React.Component {
                                 variant="outline-light"
                                 className="congrats"
                                 href={'/trade'}>
-                                Congratulations, see your newly bout stock here
+                                Congratulations, see your newly bought stock here!
                             </Button>
                         </div>
                     </Route>
