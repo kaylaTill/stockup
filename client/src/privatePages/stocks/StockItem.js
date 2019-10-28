@@ -113,7 +113,7 @@ class StockListItem extends React.Component {
                                     +</Button>
                             <Button
                                 type="submit"
-                                className="submit-buy"
+                                className="collapse-buy"
                                 variant="outline-light"
                                 size="sm" block
                                 >Buy</Button>

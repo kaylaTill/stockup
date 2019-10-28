@@ -16,6 +16,18 @@
     left: 110%;
 }
 
+#buy-more-form  {
+    position: relative;
+    margin-top: 10%;
+    left: 72%;
+}
+.collapse-buy {
+    position: relative;
+    margin-top: 10%;
+    width: 35%;
+    left: 70%;
+}
+
 .sell {
     position: relative;
     left: 110%;
