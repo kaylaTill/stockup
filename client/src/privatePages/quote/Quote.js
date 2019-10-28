@@ -81,6 +81,7 @@ class Quote extends React.Component {
             this.state.symbol,
             this.state.companyName, 
             this.state.latestPrice, 
+            this.state.shares,
             this.state.shares
         )
     }

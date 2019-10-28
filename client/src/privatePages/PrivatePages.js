@@ -63,7 +63,6 @@ class PrivatePages extends React.Component {
     }
 
     buyStock(symbol, companyName, price, shares, updateShares = 0) {
-        console.log(this.state.balance - ((price * shares) * 1.00))
         axios.post('/buy-stock', {
             symbol: symbol,
             companyName: companyName,
@@ -83,7 +82,6 @@ class PrivatePages extends React.Component {
 
 
     sellStock(symbol, price, shares) {
-        console.log((price * shares))
         axios.post('/sell-stock', {
             symbol: symbol,
             price: price,
