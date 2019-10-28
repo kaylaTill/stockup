@@ -18,3 +18,58 @@
     position:relative; 
     left: 35%;
 }
+
+
+#buy-collapse {
+    margin-left: 30%;
+    width: 40%;
+    margin-top: 30px;
+}
+.symbol {
+    text-align: center;
+}
+.shares:focus {outline:none}
+.shares {
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    left: 26%;
+    width: 35%;
+    height: 40%;
+    border-radius: 15px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+
+.buy-increase {
+    border-radius: 100%;
+    min-width: 32px;
+    min-height: 30px;
+    padding-left: 0px;
+    padding-right: 2px;
+    font-size: 15px;
+    text-align: center;
+    font-family: Impact, fantasy;
+    position: relative;
+    left: 36%;
+}
+.buy-decrease {
+    border-radius: 100%;
+    min-width: 32px;
+    min-height: 30px;
+    padding-left: 2px;
+    padding-right: 0px;
+    font-size: 15px;
+    text-align: center;
+    font-family: Impact, fantasy;
+    position: relative;
+    left: 20%;
+}
+

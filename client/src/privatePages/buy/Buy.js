@@ -48,6 +48,7 @@ class Buy extends React.Component  {
                     <Form id="buy-collapse" onSubmit={this.props.buyStock}>
                         <Form.Control
                             name="symbol"
+                            className="symbol"
                             autoComplete="off"
                             placeholder="Symbol"
                             value={this.state.value}
@@ -57,13 +58,14 @@ class Buy extends React.Component  {
                             <Button variant="outline-light"
                                 size="sm"
                                 name="decrease"
-                                className="decrease"
+                                className="buy-decrease"
                                 onClick={this.handleShareUpdate}>
                                 -</Button>
                             <input
                                 type="number"
-                                className="share-quantity"
+                                className="shares"
                                 name="shares"
+                                placeholder="Shares"
                                 min={0}
                                 max={100}
                                 value={this.state.shares > 0 && this.state.shares}
@@ -71,7 +73,7 @@ class Buy extends React.Component  {
                             />
                             <Button variant="outline-light"
                                 size="sm" name="increase"
-                                className="increase"
+                                className="buy-increase"
                                 onClick={this.handleShareUpdate} >
                                 +</Button>
                         </div>
