@@ -56,21 +56,19 @@ class PrivatePages extends React.Component {
 
     buyStock(symbol, companyName, price, shares) {
         console.log(this.state.balance - ((price * shares) * 1.00))
-
-        // console.log(this.state.balance - ((price * shares) * 1.00))
-        // axios.post('/buy-stock', {
-        //     symbol: symbol,
-        //     companyName: companyName,
-        //     price: price,
-        //     shares: shares,
-        //     balance: ((price * shares) * 1.00),
-        // })
-        // .then((res) => {
-        //     console.log(res)
-        // })
-        // .catch((err) => {
-        //     console.log(err)
-        // });
+        axios.post('/buy-stock', {
+            symbol: symbol,
+            companyName: companyName,
+            price: price,
+            shares: shares,
+            balance: this.state.balance - ((price * shares) * 1.00)
+        })
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        });
     }
 
     render() {
@@ -82,8 +80,6 @@ class PrivatePages extends React.Component {
                     <Route exact={true} path={'/'}>
                         
                     </Route>
-
-
                     <Route exact={true} path={'/trade'}>
                         <Trade balance={this.state.balance}/>
                     </Route>

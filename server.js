@@ -160,6 +160,7 @@ app.post('/buy-stock', (req, res, next) => {
                 {user_balance: req.body.balance},
                 { where: { user_id: userId } }
             )
+            res.sendStatus(200);
         })
         .catch((err) => {
             console.log(err)
@@ -168,10 +169,19 @@ app.post('/buy-stock', (req, res, next) => {
     .catch(() => {
         res.status(404)
     });
+})
 
-
-
-
+app.get('/userstock', (req, res, next) => {
+    User.User.findOne({ where: { username: req.session.user.username }})
+    .then((result) => {
+        userstock.UserStock.findAll({ where: { user_id: result.id }})
+        .then((results) => {
+            console.log(results)
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    })
 })
 
 
