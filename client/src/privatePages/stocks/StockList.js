@@ -2,45 +2,37 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './StockList.css';
+import StockListItem from './StockItem';
 
-class StockList  extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-
-
-    render() {
-        console.log(this.props.stocks)
-
-        return (
-            <Table responsive className="stock-table">
-                <thead>
-                    <tr>
-                        <th>Company Name</th>
-                        <th>Symbol</th>
-                        <th>Price Per Share</th>
-                        <th>Total Shares</th>
-                        <th>Current Balance</th>
-                    </tr>
-                </thead>
-                <tbody className="stock">
-                    {this.props.stocks.map((stock) => {
-                        return (
-                            <tr>
-                                <td className="company-name">{stock.companyName}</td>
-                                <td className="symbol-table">{stock.symbol}</td>
-                                <td className="price">{stock.price}</td>
-                                <td className="total-shares">{stock.shares}</td>
-                                <td className="current-balance">{this.props.balance}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </Table>
-        );
-    }   
-}
+const StockList  = ((props) => {
+    return (
+        <Table responsive className="stock-table">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Symbol</th>
+                    <th>Price Per Share</th>
+                    <th>Total Shares</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody className="stock">
+                {props.stocks.map((stock) => {
+                    return (
+                        // <tr>
+                        //     <td className="company-name">{stock.companyName}</td>
+                        //     <td className="symbol-table">{stock.symbol}</td>
+                        //     <td className="price">{stock.price}</td>
+                        //     <td className="total-shares">{stock.shares}</td>
+                        //     <td className="total-price">{stock.shares * stock.price}</td>
+                        // </tr>
+                        <StockListItem stock={stock}/>
+                    )
+                })}
+            </tbody>
+        </Table>
+    );
+})
 
 
 export default StockList;
