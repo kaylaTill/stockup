@@ -29,7 +29,7 @@ class StockList  extends React.Component {
                         <td className="name">Table cell</td>
                         <td className="symbol">Table cell</td>
                         <td className="price">Table cell</td>
-                        <td className="shares">Table cell</td>
+                        <td className="total-shares">Table cell</td>
                         <td className="balance">{this.props.balance}</td>
                     </tr>
                 </tbody>
