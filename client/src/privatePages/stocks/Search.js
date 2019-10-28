@@ -40,6 +40,7 @@ class Search extends React.Component {
                 <Form.Control
                     className="input-search"
                     name="value"
+                    autoComplete="off"
                     placeholder="Filter By Search.."
                     value={this.state.value}
                     onChange={this.handleChange}
