@@ -33,15 +33,15 @@
     position: relative;
     top: 50%;
     color: white;
-    background-color: rgb(27, 27, 27);
     font-family: Impact, fantasy;
     border-color: white;
 }
 
 
 #add-balance {
-    width: 30%;
+    width: 20%;
     position: relative;
-    left: 75%;
-    height: 15%;
+    font-family: Impact, fantasy;
+    left: 77%;
+    height: 5%;
 }

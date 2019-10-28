@@ -13,12 +13,14 @@ class Trade extends React.Component {
             open: false,
             amount: 0
         }
-        
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     
     handleSubmit(event) {
         event.preventDefault()
-        let decimalAmount = this.state.amount.toFixed(2)
+        let decimalAmount = (parseFloat(this.state.amount))
+        console.log(decimalAmount)
         this.props.addToBalance(decimalAmount);
     }
 
