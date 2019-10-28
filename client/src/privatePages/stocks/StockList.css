@@ -1,6 +1,5 @@
 .stock-table {
     color: white;
-    /* text-align: right; */
     font-family: Impact, fantasy;
 }
 
@@ -9,4 +8,17 @@
 } 
 .stock-item:hover {
     background-color: #2a2a2a ;
+}
+
+.buy-more {
+    margin-top: 10%;
+    position: relative;
+    left: 110%;
+}
+
+.sell {
+    position: relative;
+    left: 110%;
+    margin-top: 5%;
+    margin-bottom: 10%;
 }
