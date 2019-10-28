@@ -1,3 +1,13 @@
+.title {
+    color: white;
+    font-family: Impact, fantasy;
+    position: relative;
+    font-size: 20px;
+    left: 20%;
+}
+
 .graph {
     color: white;
+    width: 60%;
+    height: 50%;
 }

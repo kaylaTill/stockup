@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import API_KEY from './key';
 import { Line } from 'react-chartjs-2';
-
+import './MainGraph.css';
 
 class LineGraph extends Component {
     
@@ -10,12 +10,11 @@ class LineGraph extends Component {
         super(props);
         
         this.state = {
-            data: []
-           
+            data: [],
+            graphSymbol: ''
         }
+        this.getFormattedDate = this.getFormattedDate.bind(this);
     }
-
-    
     
     componentDidMount() {
         axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${'FB'}.json?start_date=2018-01-01&end_date=2019-01-01&api_key=${API_KEY}`)
@@ -25,6 +24,22 @@ class LineGraph extends Component {
         .catch((err) => {
             console.log(err)
         });
+    }
+
+    getFormattedDate(date) {
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        var year = date.getFullYear();
+        var month = (date.getMonth());
+        month = months[month];
+
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+
+        return month + ' ' + day + ' ' + year;
     }
     
     
@@ -45,22 +60,18 @@ class LineGraph extends Component {
         }
         
         this.state.data.map((entry) => {
-            options.labels.push(entry[0])
+            options.labels.push(this.getFormattedDate(new Date(entry[0])))
             options.datasets[0].data.push(entry[1])
         })
 
         return (
-            <div>
+            <div className="graph">
+                <div className="title">Stock</div>
                 <Line
                     data={options}
                     options={{
-                        title: {
-                            display: true,
-                            text: 'Stock',
-                            fontSize: 20
-                        },
                         legend: {
-                            display: true,
+                            display: false,
                             position: 'right'
                         }
                     }}
