@@ -65,7 +65,7 @@ class Buy extends React.Component  {
                                 type="number"
                                 className="shares"
                                 name="shares"
-                                placeholder="Shares"
+                                placeholder={0}
                                 min={0}
                                 max={100}
                                 value={this.state.shares > 0 && this.state.shares}
@@ -79,7 +79,7 @@ class Buy extends React.Component  {
                         </div>
                         <Button
                             type="submit"
-                            className="submit-buy"
+                            className="buy-submit"
                             variant="outline-light"
                             size="sm" block
                         >

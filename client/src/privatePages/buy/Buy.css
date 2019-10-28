@@ -6,7 +6,7 @@
     margin-top: 15px;
     margin-bottom: 20px;
     position:relative; 
-    left: 35%;
+    left: 35.5%;
 }
 .quote-from-buy {
     font-family: Impact, fantasy;
@@ -16,12 +16,12 @@
     margin-top: 15px;
     margin-bottom: 20px;
     position:relative; 
-    left: 35%;
+    left: 35.5%;
 }
 
 
 #buy-collapse {
-    margin-left: 30%;
+    margin-left: 31%;
     width: 40%;
     margin-top: 30px;
 }
@@ -34,7 +34,7 @@
     position: relative;
     margin-top: 20px;
     margin-bottom: 20px;
-    left: 26%;
+    left: 24%;
     width: 35%;
     height: 40%;
     border-radius: 15px;
@@ -50,7 +50,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .buy-increase {
     border-radius: 100%;
-    min-width: 32px;
+    min-width: 35px;
     min-height: 30px;
     padding-left: 0px;
     padding-right: 2px;
@@ -58,11 +58,11 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     font-family: Impact, fantasy;
     position: relative;
-    left: 36%;
+    left: 28%;
 }
 .buy-decrease {
     border-radius: 100%;
-    min-width: 32px;
+    min-width: 35px;
     min-height: 30px;
     padding-left: 2px;
     padding-right: 0px;
@@ -73,3 +73,12 @@ input[type=number]::-webkit-outer-spin-button {
     left: 20%;
 }
 
+.buy-submit {
+    font-family: Impact, fantasy;
+    width: 55%;
+    height: 30%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    position:relative; 
+    left: 21%;
+}
