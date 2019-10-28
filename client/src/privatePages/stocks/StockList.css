@@ -3,6 +3,12 @@
     font-family: Impact, fantasy;
 }
 
+.balance {
+    position: relative;
+    left: 200%;
+    margin-bottom: 5%;
+}
+
 .stock-item {
     text-align: center;
 } 

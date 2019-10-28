@@ -8,6 +8,7 @@ const StockList  = ((props) => {
     return (
         <Table responsive className="stock-table">
             <thead>
+                <div className="balance">Current Balance:   ${props.balance} | usd</div>
                 <tr>
                     <th>Company Name</th>
                     <th>Symbol</th>
