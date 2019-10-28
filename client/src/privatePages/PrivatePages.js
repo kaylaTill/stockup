@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import PrivateNav from './privateNav';
 import Trade from './trade/Trade';
@@ -8,7 +9,6 @@ import Quote from './quote/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import  './PrivatePages.css';
 import API_KEY from '../key';
-import { Button } from 'react-bootstrap';
 
 class PrivatePages extends React.Component {
     constructor(props) {
@@ -16,10 +16,13 @@ class PrivatePages extends React.Component {
         this.state = {
             loggedIn: true,
             stocks: [],
+            symbol: null,
             balance: 0.00
         }
         this.handleLogout = this.handleLogout.bind(this);
         this.buyStock = this.buyStock.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
+        this.filterBySymbol = this.filterBySymbol.bind(this);
     }
 
     componentDidMount() {
@@ -82,8 +85,22 @@ class PrivatePages extends React.Component {
         });
     }
 
+
+    handleSearch(symbol) {
+        this.setState({ symbol: symbol })
+    }
+
+
+    filterBySymbol() {
+        if (this.state.symbol) {
+            return this.state.stocks.filter(stock => stock.symbol.toLowerCase() === this.state.symbol.toLowerCase())
+        } 
+        return this.state.stocks;
+    }
+
+
     render() {
-        // console.log(this.state.stocks)
+        const stocks = this.filterBySymbol()
         return (
             <Router>
                 <PrivateNav handleLogout={this.handleLogout}/>
@@ -93,7 +110,7 @@ class PrivatePages extends React.Component {
                         
                     </Route>
                     <Route exact={true} path={'/trade'}>
-                        <Trade stocks={this.state.stocks} balance={this.state.balance}/>
+                        <Trade handleSearch={this.handleSearch} stocks={stocks} balance={this.state.balance}/>
                     </Route>
 
                     <Route exact={true} path={'/quote'}>

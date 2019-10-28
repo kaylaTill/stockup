@@ -5,6 +5,7 @@ import Buy from '../buy/Buy';
 import { Button } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './trade.css';
+import Search from '../stocks/Search';
 
 
 class Trade extends React.Component {
@@ -21,7 +22,8 @@ class Trade extends React.Component {
     render() {
         return (
             <div className="dashboard">
-                {/* <div className="balance">Balance: {this.props.balance}</div> */}
+                <Search handleSearch={this.props.handleSearch}/>
+                
                 <Button className="to-quote-button"
                     block size='sm' variant="outline-light"
                     href={'/quote'}
