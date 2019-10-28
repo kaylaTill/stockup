@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-const API_KEY = 't7V6zWDxHvWkYYdxXzEN';
+import API_KEY from './key';
 import { Line } from 'react-chartjs-2';
 
 
@@ -13,16 +13,8 @@ class LineGraph extends Component {
             data: []
            
         }
-        // this.getPoints = this.getPoints.bind(this);
     }
 
-   
-
-    // getPoints() {
-    //     this.state.data.map((entry) => {
-    //         this.state.series[0].data.push([entry[0], entry[1]])
-    //     })
-    // }
     
     
     componentDidMount() {
@@ -37,7 +29,6 @@ class LineGraph extends Component {
     
     
     render() {
-        
         const options = {
             labels: [],
             datasets: [
