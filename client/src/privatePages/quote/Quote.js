@@ -49,7 +49,10 @@ class Quote extends React.Component {
             this.clearForm()
         })
         .catch((err) => {
-            this.setState({noResults: true})
+            this.setState({
+                noResults: true, 
+                open: false
+            })
         });
     }
 
