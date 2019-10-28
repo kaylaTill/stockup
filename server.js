@@ -147,13 +147,27 @@ app.post('/buy-stock', (req, res, next) => {
     .then((results) => {
         console.log('-----Found User-----');
         const userId = results.id;
-        userstock.UserStock.create({
-            symbol: req.body.symbol,
-            companyName: req.body.companyName,
-            price: req.body.price,
-            shares: req.body.shares,
-            user_id: userId
-        })
+        userstock.UserStock.findOne({where: {user_id: userId, symbol: req.body.symbol}})
+            .then((results) => {
+                console.log('-----FOUND STOCK FOR USER -----')
+                if (results) {
+                    console.log(results)
+                    console.log('-----UPDATED STOCK -----');
+                    return userstock.UserStock.update(
+                        { shares: req.body.updateShares }, 
+                        {where: {id: results.id}}
+                    )
+                } 
+                console.log('-----CREATED NEW  STOCK -----')
+                userstock.UserStock.create({
+                    symbol: req.body.symbol,
+                    companyName: req.body.companyName,
+                    price: req.body.price,
+                    shares: req.body.shares,
+                    user_id: userId
+                })
+            })
+
         .then(() => {
             console.log('-----User Stock Added-----');
             userBalance.UserBalance.update(
