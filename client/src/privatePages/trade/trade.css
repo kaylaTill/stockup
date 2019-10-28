@@ -8,7 +8,7 @@
     left: 80%;
 }
 
-.to-buy-button {
+.to-balance-button {
     font-family: Impact, fantasy;
     width: 15%;
     height: 10%;
@@ -17,6 +17,7 @@
     position:relative; 
     left: 80%;
 }
+
 
 
 .search {
@@ -35,4 +36,12 @@
     background-color: rgb(27, 27, 27);
     font-family: Impact, fantasy;
     border-color: white;
+}
+
+
+#add-balance {
+    width: 30%;
+    position: relative;
+    left: 75%;
+    height: 15%;
 }

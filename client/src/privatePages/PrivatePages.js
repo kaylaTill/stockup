@@ -9,6 +9,7 @@ import Quote from './quote/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import  './PrivatePages.css';
 import API_KEY from '../key';
+import { timingSafeEqual } from 'crypto';
 
 class PrivatePages extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class PrivatePages extends React.Component {
         this.filterBySymbol = this.filterBySymbol.bind(this);
         this.sellStock = this.sellStock.bind(this);
         this.sellAllCompanyStock = this.sellAllCompanyStock.bind(this);
-        this.getQuote = this.getQuote.bind(this);
+        this.addToBalance = this.addToBalance.bind(this);
     }
 
     componentDidMount() {
@@ -48,26 +49,6 @@ class PrivatePages extends React.Component {
                 console.log(err)
             });
             
-    }
-
-
-    getQuote(symbol) {
-        axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
-            .then(({ data }) => {
-                this.setState({
-                    open: true,
-                    companyName: data.companyName,
-                    latestPrice: data.latestPrice,
-                    symbol: data.symbol,
-                    annualHigh: data.week52High,
-                    annualLow: data.week52Low,
-                    change: data.ytdChange
-                })
-                console.log(data)
-            })
-            .catch((err) => {
-                console.log(err)
-            });
     }
 
 
@@ -130,6 +111,19 @@ class PrivatePages extends React.Component {
                 console.log(err)
             });
     }
+    
+    addToBalance(amout) {
+        axios.post('/add-to-balance', {
+            balance: (parseFloat(this.state.balance) + parseFloat(amout))
+        })
+        .then(() => {
+            window.location.reload()
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
 
 
 
@@ -161,6 +155,7 @@ class PrivatePages extends React.Component {
                             handleSearch={this.handleSearch}    
                             buyStock={this.buyStock} 
                             sellStock={this.sellStock}
+                            addToBalance={this.addToBalance}
                             sellAll={this.sellAllCompanyStock}
                             stocks={stocks} 
                             balance={this.state.balance}

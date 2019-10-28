@@ -247,6 +247,22 @@ app.post('/sell-all-stock', (req, res, next) => {
 
 })
 
+app.post('/add-to-balance', (req, res, next) => {
+    User.User.findOne({ where: { username: req.session.user.username } })
+    .then((result) => {
+        userBalance.UserBalance.update(
+            { user_balance: req.body.balance },
+            { where: { user_id: result.id } }
+        )
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    })
+})
+
 app.get('/user-stock', (req, res, next) => {
     User.User.findOne({ where: { username: req.session.user.username }})
     .then((result) => {
