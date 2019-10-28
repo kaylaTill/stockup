@@ -12,9 +12,9 @@ class StockListItem extends React.Component {
             buyMoreOpen: false,
             sellOpen: false,
             shares: 0,
-            companyName: '',
-            symbol: '',
-
+            companyName: this.props.stock.companyName,
+            symbol: this.props.stock.symbol,
+            price: this.props.stock.price
         }
         this.collapseItem = this.collapseItem.bind(this);
         this.collapseBuy = this.collapseBuy.bind(this);
@@ -53,8 +53,9 @@ class StockListItem extends React.Component {
         this.props.buyStock(
             this.state.symbol,
             this.state.companyName,
-            this.state.latestPrice,
-            this.state.shares
+            this.state.price,
+            this.state.shares,
+            (this.props.stock.shares + this.state.shares)
         )
     }
 
@@ -64,6 +65,7 @@ class StockListItem extends React.Component {
     render() {
         console.log(this.props.stock)
         const { stock } = this.props;
+
         return (
             <>
                 <tr 
@@ -95,6 +97,7 @@ class StockListItem extends React.Component {
                                 buyMoreOpen={this.state.buyMoreOpen} 
                                 shares={this.state.shares} 
                                 handleChange={this.handleChange} 
+                                handleBuy={this.handleBuy}
                                 handleShareUpdate={this.handleShareUpdate}
                             />
                         </div>

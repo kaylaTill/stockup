@@ -36,7 +36,7 @@ class Trade extends React.Component {
                 > Buy Stock
                 </Button>
 
-                <StockList stocks={this.props.stocks} balance={this.props.balance}/>
+                <StockList buyStock={this.props.buyStock} stocks={this.props.stocks} balance={this.props.balance}/>
             </div>
         )
     }

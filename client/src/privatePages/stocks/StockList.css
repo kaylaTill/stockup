@@ -5,7 +5,7 @@
 
 .balance {
     position: relative;
-    left: 200%;
+    left: 215%;
     margin-bottom: 5%;
 }
 
@@ -19,13 +19,13 @@
 .buy-more {
     margin-top: 10%;
     position: relative;
-    left: 108%;
+    left: 100%;
 }
 
 #buy-more-form  {
     position: relative;
     margin-top: 10%;
-    left: 72%;
+    left: 65%;
 }
 .collapse-buy {
     position: relative;
@@ -38,19 +38,19 @@
     position: relative;
     margin-top: 5%;
     margin-bottom: 10%;
-    left: 108%;
+    left: 100%;
 }
 
 #sell-form {
     position: relative;
     margin-top: 10%;
-    left: 71%;
+    left: 65%;
 }
 
 .collapse-sell {
     position: relative;
     margin-top: 10%;
     width: 35%;
-    left: 71%;
+    left: 65%;
     margin-bottom: 10%;
 }
