@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, Form, Collapse } from 'react-bootstrap';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-const SellFromStockItem = ((props) => {
+const BuyFromStockItem = ((props) => {
     return (
-        <Collapse in={props.sellOpen}>
-            <Form id="sell-form">
+        <Collapse in={props.buyMoreOpen}>
+            <Form id="buy-more-form">
                 <Button variant="outline-light"
                     size="sm"
                     name="decrease"
@@ -28,14 +28,14 @@ const SellFromStockItem = ((props) => {
                     +</Button>
                 <Button
                     type="submit"
-                    className="collapse-sell"
+                    className="collapse-buy"
                     variant="outline-light"
                     size="sm" block
-                >{`Sell ${props.shares > 0 ? props.shares : 0} Shares`}</Button>
+                >{`Buy ${props.shares > 0 ? props.shares : 0} More Shares`}</Button>
             </Form>
         </Collapse>
     );
 })
 
 
-export default SellFromStockItem;
+export default BuyFromStockItem;

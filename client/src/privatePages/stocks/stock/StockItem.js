@@ -1,7 +1,6 @@
 import React from 'react';
 import { Collapse, Button, Form } from 'react-bootstrap';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './StockList.css';
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import BuyFromStockItem from './BuyFromStockItem';
 import SellFromStockItem from './SellFromStockItem';
 
