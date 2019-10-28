@@ -17,9 +17,9 @@ const StockList  = ((props) => {
                 </tr>
             </thead>
             <tbody className="stock">
-                {props.stocks.map((stock) => {
+                {props.stocks.map((stock, index) => {
                     return (
-                        <StockListItem stock={stock}/>
+                        <StockListItem key={index} stock={stock}/>
                     )
                 })}
             </tbody>
