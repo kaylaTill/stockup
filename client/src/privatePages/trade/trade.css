@@ -2,7 +2,7 @@
     font-family: Impact, fantasy;
     width: 15%;
     height: 10%;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 20px;
     position:relative;
     left: 80%;
@@ -12,9 +12,27 @@
     font-family: Impact, fantasy;
     width: 15%;
     height: 10%;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 20px;
     position:relative; 
     left: 80%;
 }
 
+
+.search {
+    font-family: Impact, fantasy;
+    position: relative;
+    top: 50%;
+    width: 40%;
+    height: 10%;
+    
+}
+
+.input-search {
+    position: relative;
+    top: 50%;
+    color: white;
+    background-color: rgb(27, 27, 27);
+    font-family: Impact, fantasy;
+    border-color: white;
+}

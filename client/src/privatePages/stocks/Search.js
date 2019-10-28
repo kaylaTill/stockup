@@ -34,15 +34,16 @@ class Search extends React.Component {
 
     render() {
         return(
-            <Form onSubmit={this.handleSubmit}>
-                <Form.Group>
-                    <Form.Control
-                        name="value"
-                        placeholder="Filter By Search.."
-                        value={this.state.value}
-                        onChange={this.handleChange}
-                    />
-                </Form.Group>
+            <Form className="search"
+                onSubmit={this.handleSubmit}
+            >
+                <Form.Control
+                    className="input-search"
+                    name="value"
+                    placeholder="Filter By Search.."
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                />
             </Form>
         )
     }
