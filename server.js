@@ -217,6 +217,36 @@ app.post('/sell-stock', (req, res, next) => {
 
 })
 
+
+
+app.post('/sell-all-stock', (req, res, next) => {
+    User.User.findOne({ where: { username: req.session.user.username } })
+        .then((results) => {
+            console.log('-----Found User-----');
+            const userId = results.id;
+            userstock.UserStock.findOne({ where: { user_id: userId, symbol: req.body.symbol } })
+                .then((results) => {
+                    userstock.UserStock.destroy(
+                        { where: { id: results.id } }
+                    )
+                })
+                .then((res) => {
+                    userBalance.UserBalance.update(
+                        { user_balance: req.body.balance },
+                        { where: { user_id: userId } }
+                    )
+                })
+                .catch((err) => {
+                    console.log(err)
+                });
+        })
+        .catch(() => {
+            res.status(404)
+        });
+
+
+})
+
 app.get('/user-stock', (req, res, next) => {
     User.User.findOne({ where: { username: req.session.user.username }})
     .then((result) => {

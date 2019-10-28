@@ -20,7 +20,13 @@ const StockList  = ((props) => {
             <tbody className="stock">
                 {props.stocks.map((stock, index) => {
                     return (
-                        <StockListItem  sellStock={props.sellStock} buyStock={props.buyStock} key={index} stock={stock}/>
+                        <StockListItem  
+                            sellAll={props.sellAll} 
+                            sellStock={props.sellStock} 
+                            buyStock={props.buyStock} 
+                            key={index} 
+                            stock={stock}
+                        />
                     )
                 })}
             </tbody>

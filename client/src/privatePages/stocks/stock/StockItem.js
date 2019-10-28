@@ -23,6 +23,7 @@ class StockListItem extends React.Component {
         this.handleShareUpdate = this.handleShareUpdate.bind(this);
         this.handleBuy = this.handleBuy.bind(this);
         this.handleSell = this.handleSell.bind(this);
+        this.handleSellAll = this.handleSellAll.bind(this);
     }
 
 
@@ -70,13 +71,21 @@ class StockListItem extends React.Component {
         )
     }
 
+    handleSellAll(event) {
+        event.preventDefault()
+        this.props.sellAll(
+            this.state.symbol,
+            this.state.price,
+            (this.props.stock.shares - this.state.shares)
+        )
+    }
+
 
 
 
     render() {
         console.log(this.props.stock)
         const { stock } = this.props;
-
         return (
             <>
                 <tr 
@@ -121,11 +130,14 @@ class StockListItem extends React.Component {
                                 onClick={this.collapseSell}
                                 aria-expanded={this.state.sellOpen}
                             > Sell </Button>
+
                             <SellFromStockItem
                                 sellOpen={this.state.sellOpen}
+                                symbol={stock.symbol}
                                 shares={this.state.shares}
                                 handleSell={this.handleSell}
                                 handleChange={this.handleChange}
+                                handleSellAll={this.handleSellAll}
                                 handleShareUpdate={this.handleShareUpdate}
                             />
                         </div>

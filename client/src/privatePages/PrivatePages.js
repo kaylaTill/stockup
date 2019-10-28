@@ -97,21 +97,17 @@ class PrivatePages extends React.Component {
             });
     }
         
-    sellAllCompanyStock() {
+    sellAllCompanyStock(symbol, price, shares) {
         axios.post('/sell-all-stock', {
             symbol: symbol,
-            price: price,
-            shares: shares,
-            balance: this.state.balance - ((price * shares) * 1.00)
+            balance: (parseFloat(this.state.balance) + parseFloat(price * shares))
         })
-            .then((res) => {
-                console.log(res)
+            .then(() => {
                 window.location.href = '/sell-congratulations'
             })
             .catch((err) => {
                 console.log(err)
             });
-            
     }
 
 
@@ -144,6 +140,7 @@ class PrivatePages extends React.Component {
                             handleSearch={this.handleSearch}    
                             buyStock={this.buyStock} 
                             sellStock={this.sellStock}
+                            sellAll={this.sellAllCompanyStock}
                             stocks={stocks} 
                             balance={this.state.balance}
                         />
