@@ -171,15 +171,16 @@ app.post('/buy-stock', (req, res, next) => {
     });
 })
 
-app.get('/userstock', (req, res, next) => {
+app.get('/user-stock', (req, res, next) => {
     User.User.findOne({ where: { username: req.session.user.username }})
     .then((result) => {
         userstock.UserStock.findAll({ where: { user_id: result.id }})
         .then((results) => {
-            console.log(results)
+            res.json(results)
         })
         .catch((err) => {
             console.log(err);
+            res.status(404);
         })
     })
 })

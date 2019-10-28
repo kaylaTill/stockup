@@ -31,10 +31,21 @@ class PrivatePages extends React.Component {
             });
 
         axios.get('/balance')
-            .then(({data}) => {
-                console.log(data)
+            .then(({ data }) => {
+                // console.log(data)
                 this.setState({
                     balance: data
+                })
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+            
+        axios.get('/user-stock')
+            .then(({ data }) => {
+                // console.log(data);
+                this.setState({
+                    stocks: data
                 })
             })
             .catch((err) => {
@@ -72,6 +83,7 @@ class PrivatePages extends React.Component {
     }
 
     render() {
+        // console.log(this.state.stocks)
         return (
             <Router>
                 <PrivateNav handleLogout={this.handleLogout}/>
@@ -81,7 +93,7 @@ class PrivatePages extends React.Component {
                         
                     </Route>
                     <Route exact={true} path={'/trade'}>
-                        <Trade balance={this.state.balance}/>
+                        <Trade stocks={this.state.stocks} balance={this.state.balance}/>
                     </Route>
 
                     <Route exact={true} path={'/quote'}>

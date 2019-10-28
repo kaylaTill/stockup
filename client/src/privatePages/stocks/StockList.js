@@ -6,13 +6,13 @@ import './StockList.css';
 class StockList  extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            stocks: []
-        }
     }
 
 
+
     render() {
+        console.log(this.props.stocks)
+
         return (
             <Table responsive className="stock-table">
                 <thead>
@@ -21,17 +21,21 @@ class StockList  extends React.Component {
                         <th>Symbol</th>
                         <th>Price Per Share</th>
                         <th>Total Shares</th>
-                        <th>Balance</th>
+                        <th>Current Balance</th>
                     </tr>
                 </thead>
                 <tbody className="stock">
-                    <tr>
-                        <td className="name">Table cell</td>
-                        <td className="symbol">Table cell</td>
-                        <td className="price">Table cell</td>
-                        <td className="total-shares">Table cell</td>
-                        <td className="balance">{this.props.balance}</td>
-                    </tr>
+                    {this.props.stocks.map((stock) => {
+                        return (
+                            <tr>
+                                <td className="name">{stock.companyName}</td>
+                                <td className="symbol">{stock.symbol}</td>
+                                <td className="price">{stock.price}</td>
+                                <td className="total-shares">{stock.shares}</td>
+                                <td className="current-balance">{this.props.balance}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </Table>
         );
