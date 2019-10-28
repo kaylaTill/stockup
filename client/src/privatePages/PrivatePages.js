@@ -9,6 +9,7 @@ import Quote from './quote/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import  './PrivatePages.css';
 import API_KEY from '../key';
+import AreaChart from './graphs/MainGraph';
 
 class PrivatePages extends React.Component {
     constructor(props) {
@@ -98,7 +99,7 @@ class PrivatePages extends React.Component {
 
                 <Switch fallback={<div></div>}>
                     <Route exact={true} path={'/'}>
-                        
+                        <AreaChart/>
                     </Route>
                     <Route exact={true} path={'/trade'}>
                         <Trade handleSearch={this.handleSearch} stocks={stocks} balance={this.state.balance}/>
