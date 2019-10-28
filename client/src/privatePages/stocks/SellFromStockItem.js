@@ -31,8 +31,7 @@ const SellFromStockItem = ((props) => {
                     className="collapse-sell"
                     variant="outline-light"
                     size="sm" block
-
-                >{`Buy ${props.shares > 0 ? props.shares : 0} More Shares`}</Button>
+                >{`Sell ${props.shares > 0 ? props.shares : 0} Shares`}</Button>
             </Form>
         </Collapse>
     );

@@ -14,7 +14,6 @@ class PrivatePages extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedIn: true,
             stocks: [],
             symbol: null,
             balance: 0.00
@@ -26,14 +25,6 @@ class PrivatePages extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('/loggedIn')
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
         axios.get('/balance')
             .then(({ data }) => {
                 this.setState({

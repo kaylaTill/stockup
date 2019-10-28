@@ -27,6 +27,8 @@ class Buy extends React.Component  {
     handleShareUpdate(event) {
         event.target.name == 'increase' ? this.setState({ shares: this.state.shares + 1 }) : this.setState({ shares: this.state.shares - 1 })
     }
+
+    
     render() {
         return (
             <div>
