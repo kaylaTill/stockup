@@ -61,11 +61,13 @@ class App extends React.Component {
               StockUP.
             </h2>
           </Link>
-          <Register handleRegister={this.handleRegister}/>
-          <Login handleLogin={this.handleLogin}/>
-
           <Suspense fallback={<div/>}>
             <Switch>
+              <Route exact={true} path={'/'}>
+                <Register handleRegister={this.handleRegister}/>
+                <Login handleLogin={this.handleLogin}/>
+              </Route>
+              
               <Route exact={true} path={'/login-failed'}>
                 <LoginFailure/>
               </Route>

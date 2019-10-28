@@ -1,8 +1,8 @@
 .failed {
     font-size: 20px;
     color: white;
+    margin-top: 5%;
     font-family: Impact, fantasy;
-    padding: 60px;
     align: center;
     text-align: center;
 }
@@ -10,8 +10,8 @@
 
 .try-again {
     font-family: Impact, fantasy;
-    width: 30%;
+    width: 20%;
     position:relative;
-    top:50%; 
-    left: 35%;
+    margin-top: 5%;
+    left: 40%;
 }
