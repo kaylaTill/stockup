@@ -116,6 +116,7 @@ class PrivatePages extends React.Component {
                         <div>
                             <Button block size='sm' 
                                 variant="outline-light"
+                                className="congrats"
                                 href={'/trade'}>
                                 Congratulations, see your newly bout stock here
                             </Button>
