@@ -17,7 +17,7 @@ class StockList  extends React.Component {
             <Table responsive className="stock-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Company Name</th>
                         <th>Symbol</th>
                         <th>Price Per Share</th>
                         <th>Total Shares</th>
@@ -28,7 +28,7 @@ class StockList  extends React.Component {
                     {this.props.stocks.map((stock) => {
                         return (
                             <tr>
-                                <td className="name">{stock.companyName}</td>
+                                <td className="company-name">{stock.companyName}</td>
                                 <td className="symbol">{stock.symbol}</td>
                                 <td className="price">{stock.price}</td>
                                 <td className="total-shares">{stock.shares}</td>

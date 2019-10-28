@@ -8,6 +8,7 @@ import Quote from './quote/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import  './PrivatePages.css';
 import API_KEY from '../key';
+import { Button } from 'react-bootstrap';
 
 class PrivatePages extends React.Component {
     constructor(props) {
@@ -32,7 +33,6 @@ class PrivatePages extends React.Component {
 
         axios.get('/balance')
             .then(({ data }) => {
-                // console.log(data)
                 this.setState({
                     balance: data
                 })
@@ -43,7 +43,6 @@ class PrivatePages extends React.Component {
             
         axios.get('/user-stock')
             .then(({ data }) => {
-                // console.log(data);
                 this.setState({
                     stocks: data
                 })
@@ -76,6 +75,7 @@ class PrivatePages extends React.Component {
         })
         .then((res) => {
             console.log(res)
+            window.location.href = '/congratulations'
         })
         .catch((err) => {
             console.log(err)
@@ -102,6 +102,16 @@ class PrivatePages extends React.Component {
 
                     <Route exact={true} path={'/buy'}>
                         <Buy buyStock={this.buyStock}/>
+                    </Route>
+
+                    <Route path={'/congratulations'}>
+                        <div>
+                            <Button block size='sm' 
+                                variant="outline-light"
+                                href={'/trade'}>
+                                Congratulations, see your newly bout stock here
+                            </Button>
+                        </div>
                     </Route>
                 </Switch>
             </Router>
