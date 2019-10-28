@@ -41,4 +41,6 @@ User.sync({ force: false }).then(() => {
 });
 
 
-module.exports = User;
+module.exports = {
+    User
+};

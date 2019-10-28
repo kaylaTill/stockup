@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(27, 27, 27);
+}
+
+
+
+.header {
+    color: white;
+    font-family: Impact, fantasy;
+    text-align: center;
+    margin-top: 15%;
+}

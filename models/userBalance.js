@@ -1,30 +1,21 @@
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize('mysql://root@localhost:3306/stockup');
 
-const UserStock = sequelize.define('userStock', {
-    symbol: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    companyName: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    price: {
+const UserBalance = sequelize.define('userBalance', {
+    user_balance: {
         type: Sequelize.DECIMAL(10, 2),
         allowNull: false
-    },
-    shares: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+
     },
     user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
+
     }
 
 }, {
     sequelize,
-    modelName: 'userStock'
+    modelName: 'userBalance'
 });
 
 
@@ -39,9 +30,9 @@ sequelize
 
 
 // sync user model
-UserStock.sync({ force: false }).then(() => {
-    console.log('--------Synced to stock table--------');
+UserBalance.sync({ force: false }).then(() => {
+    console.log('--------Synced to Balance table--------');
 });
 
 
-module.exports = {UserStock};
+module.exports = {UserBalance};

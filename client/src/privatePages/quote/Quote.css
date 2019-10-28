@@ -1,0 +1,92 @@
+.quote-form {
+    font-family: Impact, fantasy;
+    text-align: center;
+    width: 40%;
+    height: 20%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    position:relative;
+    left: 30%;
+}
+
+
+.quote-button {
+    font-family: Impact, fantasy;
+    width: 40%;
+    height: 15%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    position:relative; 
+    left: 30%;
+}
+
+
+.table {
+    color: white;
+    text-align: center;
+    font-family: Impact, fantasy;
+}
+
+.buy {
+    font-family: Impact, fantasy;
+    width: 50%;
+    height: 20%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    position:relative; 
+    left: 25%;
+}
+
+.share-quantity:focus {outline:none}
+.share-quantity {
+    text-align: center;
+    position: relative;
+    font-family: Impact, fantasy;
+    left: 38%;
+    width: 20%;
+    height: 40%;
+    border-radius: 15px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.increase {
+    border-radius: 100%;
+    min-width: 32px;
+    min-height: 30px;
+    padding-left: 0px;
+    padding-right: 2px;
+    font-size: 15px;
+    text-align: center;
+    font-family: Impact, fantasy;
+    position: relative;
+    left: 42%;
+}
+.decrease {
+    border-radius: 100%;
+    min-width: 32px;
+    min-height: 30px;
+    padding-left: 2px;
+    padding-right: 0px;
+    font-size: 15px;
+    text-align: center;
+    font-family: Impact, fantasy;
+    position: relative;
+    left: 32%;
+}
+
+
+
+.submit-buy {
+    font-family: Impact, fantasy;
+    width: 50%;
+    height: 20%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    position:relative; 
+    left: 25%;
+}
