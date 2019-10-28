@@ -19,6 +19,7 @@
 
 .buy-more {
     margin-top: 10%;
+    height: 20%;
     position: relative;
     left: 100%;
 }
@@ -38,6 +39,7 @@
 .sell {
     position: relative;
     margin-top: 5%;
+    height: 20%;
     margin-bottom: 10%;
     left: 100%;
 }
