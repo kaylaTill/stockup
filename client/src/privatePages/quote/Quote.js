@@ -12,6 +12,7 @@ class Quote extends React.Component {
         this.state = {
             value: '',
             open: false,
+            noResults: false,
             buyStockOpen: false,  
             companyName: '',
             latestPrice: 0,
@@ -35,6 +36,7 @@ class Quote extends React.Component {
         .then(({data}) => {
             this.setState({
                 open: true,
+                noResults: false,
                 companyName: data.companyName,
                 latestPrice: data.latestPrice,
                 symbol: data.symbol,
@@ -42,14 +44,19 @@ class Quote extends React.Component {
                 annualLow: data.week52Low,
                 change: data.ytdChange
             })
-            console.log(data)
         })
         .then(() => {
             this.clearForm()
         })
         .catch((err) => {
-            console.log(err)
+            this.setState({noResults: true})
         });
+    }
+
+    clearForm() {
+        this.setState({
+            value: ''
+        })
     }
 
     handleChange(event) {
@@ -76,12 +83,6 @@ class Quote extends React.Component {
             this.state.latestPrice, 
             this.state.shares
         )
-    }
-
-    clearForm() {
-        this.setState({
-            value: '' 
-        })
     }
 
 
@@ -155,6 +156,10 @@ class Quote extends React.Component {
                                 />
                         </div>
                     </div>
+                </Collapse>
+
+                <Collapse in={this.state.noResults}>
+                    <div id="stock-info" className="no-results">{`Sorry, couldn't find a quote for ${val}`}</div>
                 </Collapse>
         </div>
     )}

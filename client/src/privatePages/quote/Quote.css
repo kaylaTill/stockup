@@ -90,3 +90,12 @@ input[type=number]::-webkit-outer-spin-button {
     position:relative; 
     left: 25%;
 }
+
+.no-results {
+    color: white;
+    width: 60%;
+    font-family: Impact, fantasy;
+    font-size: 20px;
+    position: relative;
+    left: 30%;
+}
