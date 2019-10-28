@@ -27,6 +27,8 @@
 }
 .symbol {
     text-align: center;
+    position: relative;
+    right: 10px;
 }
 .shares:focus {outline:none}
 .shares {
@@ -75,10 +77,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .buy-submit {
     font-family: Impact, fantasy;
-    width: 55%;
+    width: 50%;
     height: 30%;
     margin-top: 15px;
     margin-bottom: 20px;
     position:relative; 
-    left: 21%;
+    left: 23%;
 }
