@@ -29,7 +29,7 @@ class StockList  extends React.Component {
                         return (
                             <tr>
                                 <td className="company-name">{stock.companyName}</td>
-                                <td className="symbol">{stock.symbol}</td>
+                                <td className="symbol-table">{stock.symbol}</td>
                                 <td className="price">{stock.price}</td>
                                 <td className="total-shares">{stock.shares}</td>
                                 <td className="current-balance">{this.props.balance}</td>
