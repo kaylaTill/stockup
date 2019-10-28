@@ -13,7 +13,7 @@
 .buy-more {
     margin-top: 10%;
     position: relative;
-    left: 110%;
+    left: 108%;
 }
 
 #buy-more-form  {
@@ -30,7 +30,21 @@
 
 .sell {
     position: relative;
-    left: 110%;
     margin-top: 5%;
+    margin-bottom: 10%;
+    left: 108%;
+}
+
+#sell-form {
+    position: relative;
+    margin-top: 10%;
+    left: 150%;
+}
+
+.collapse-sell {
+    position: relative;
+    margin-top: 10%;
+    width: 35%;
+    left: 150%;
     margin-bottom: 10%;
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import { Collapse, Button, Form } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './StockList.css';
+import BuyFromStockItem from './BuyFromStockItem';
+import SellFromStockItem from './SellFromStockItem';
 
 class StockListItem extends React.Component {
     constructor(props) {
@@ -80,51 +82,39 @@ class StockListItem extends React.Component {
                 </tr>
                 <Collapse in={this.state.itemOpen}>
                     <div id="item-info">
-                        <Button
-                            className="buy-more"
-                            variant="outline-light" 
-                            size="sm" block
-                            aria-controls="buy-more-form"
-                            onClick={this.collapseBuy}
-                            aria-expanded={this.state.buyMoreOpen}
-                        > Buy More Shares</Button>
-
-                        <Collapse in={this.state.buyMoreOpen}>
-                            <Form id="buy-more-form">
-                                <Button variant="outline-light"
-                                    size="sm"
-                                    name="decrease"
-                                    className="decrease"
-                                    onClick={this.handleShareUpdate}>
-                                    -</Button>
-                                <input
-                                    type="number"
-                                    className="share-quantity"
-                                    name="shares"
-                                    min={0}
-                                    max={100}
-                                    value={this.state.shares > 0 && this.state.shares}
-                                    onChange={this.handleChange}
-                                />
-                                <Button variant="outline-light"
-                                    size="sm" name="increase"
-                                    className="increase"
-                                    onClick={this.handleShareUpdate} >
-                                    +</Button>
+                        <div>
                             <Button
-                                type="submit"
-                                className="collapse-buy"
-                                variant="outline-light"
+                                className="buy-more"
+                                variant="outline-light" 
                                 size="sm" block
-                                >Buy</Button>
-                            </Form>
-                        </Collapse>
-                        
-                        <Button
-                            className="sell"
-                            variant="outline-light" size="sm" 
-                            block
-                        > Sell </Button>
+                                aria-controls="buy-more-form"
+                                onClick={this.collapseBuy}
+                                aria-expanded={this.state.buyMoreOpen}
+                            > Buy More Shares</Button>
+
+                            <BuyFromStockItem
+                                buyMoreOpen={this.state.buyMoreOpen} 
+                                shares={this.state.shares} 
+                                handleChange={this.handleChange} 
+                                handleShareUpdate={this.handleShareUpdate}
+                            />
+                        </div>
+                        <div>
+                            <Button
+                                className="sell"
+                                variant="outline-light" size="sm" 
+                                block
+                                aria-controls="sell-form"
+                                onClick={this.collapseSell}
+                                aria-expanded={this.state.sellOpen}
+                            > Sell </Button>
+                            <SellFromStockItem
+                                sellOpen={this.state.sellOpen}
+                                shares={this.state.shares}
+                                handleChange={this.handleChange}
+                                handleShareUpdate={this.handleShareUpdate}
+                            />
+                        </div>
                     </div>
                 </Collapse>
             </>
