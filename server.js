@@ -270,10 +270,11 @@ app.get('/user-stock', (req, res, next) => {
         .then((results) => {
             res.json(results)
         })
-        .catch((err) => {
-            console.log(err);
-            res.status(404);
-        })
+        .catch((err) => console.log(err))
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(404);
     })
 })
 
