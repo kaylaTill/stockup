@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 const API_KEY = 't7V6zWDxHvWkYYdxXzEN';
-var CanvasJSReact = require('./canvasjs-2.3.2/canvasjs.react');
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import { Line } from 'react-chartjs-2';
+
 
 class LineGraph extends Component {
     
@@ -17,6 +16,7 @@ class LineGraph extends Component {
         // this.getPoints = this.getPoints.bind(this);
     }
 
+   
 
     // getPoints() {
     //     this.state.data.map((entry) => {
@@ -37,36 +37,42 @@ class LineGraph extends Component {
     
     
     render() {
+        
+        const options = {
+            labels: [],
+            datasets: [
+                {
+                    label: 'Price (Open)',
+                    fill: false,
+                    lineTension: 0.5,
+                    backgroundColor: 'background-color: rgb(27, 27, 27);',
+                    borderColor: 'rgba(0,0,0,1)',
+                    borderWidth: 2,
+                    data: []
+                }
+            ]
+        }
+        
         this.state.data.map((entry) => {
-            options.data[0].dataPoints.push([entry[0], entry[1]])
+            options.labels.push(entry[0])
+            options.datasets[0].data.push(entry[1])
         })
 
-        const options = {
-            animationEnabled: true,
-            exportEnabled: true,
-            theme: "dark2", // "light1", "dark1", "dark2"
-            title: {
-                text: 'Stock'
-            },
-            axisY: {
-                title: "Price (Open)",
-                includeZero: false,
-                prefix: "$"
-            },
-            axisX: {
-                title: "Week of Year",
-                interval: 2
-            },
-            data: [{
-                type: "line",
-                toolTipContent: "Week {x}: {y}%",
-                dataPoints: []
-            }]
-        }
         return (
             <div>
-                <CanvasJSChart options={options}
-                /* onRef={ref => this.chart = ref} */
+                <Line
+                    data={options}
+                    options={{
+                        title: {
+                            display: true,
+                            text: 'Stock',
+                            fontSize: 20
+                        },
+                        legend: {
+                            display: true,
+                            position: 'right'
+                        }
+                    }}
                 />
             </div>
         );

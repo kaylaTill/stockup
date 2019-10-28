@@ -45,4 +45,4 @@ var CanvasJSReact = {
     CanvasJS: CanvasJS
 };
 
-export default CanvasJSReact;
+export default CanvasJSChart;
