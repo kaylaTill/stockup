@@ -2,6 +2,7 @@
     color: white;
     font-family: Impact, fantasy;
     margin-bottom: 10%;
+    text-align: left;
 }
 
 .balance {
@@ -9,9 +10,12 @@
     left: 205%;
     margin-bottom: 5%;
 }
+.stock-labels {
+    text-align: left;
+}
 
 .stock-item {
-    text-align: center;
+    text-align: left;
 } 
 .stock-item:hover {
     background-color: #2a2a2a ;

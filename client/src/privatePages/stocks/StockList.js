@@ -9,7 +9,7 @@ const StockList  = ((props) => {
         <Table responsive className="stock-table">
             <thead>
                 <div className="balance">Current Balance:   ${props.balance} | usd</div>
-                <tr>
+                <tr className="stock-labels">
                     <th>Company Name</th>
                     <th>Symbol</th>
                     <th>Price Per Share</th>
