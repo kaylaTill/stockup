@@ -28,6 +28,14 @@ class Buy extends React.Component  {
         event.target.name == 'increase' ? this.setState({ shares: this.state.shares + 1 }) : this.setState({ shares: this.state.shares - 1 })
     }
 
+    handleBuy(event) {
+        event.preventDefault()
+        this.props.buyStock({
+            
+        })
+
+    }
+
     
     render() {
         return (

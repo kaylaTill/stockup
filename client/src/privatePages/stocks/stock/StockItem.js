@@ -72,7 +72,6 @@ class StockListItem extends React.Component {
     }
 
     handleSellAll(event) {
-        event.preventDefault()
         this.props.sellAll(
             this.state.symbol,
             this.state.price,

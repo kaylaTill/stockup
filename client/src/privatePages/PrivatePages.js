@@ -24,6 +24,7 @@ class PrivatePages extends React.Component {
         this.filterBySymbol = this.filterBySymbol.bind(this);
         this.sellStock = this.sellStock.bind(this);
         this.sellAllCompanyStock = this.sellAllCompanyStock.bind(this);
+        this.getQuote = this.getQuote.bind(this);
     }
 
     componentDidMount() {
@@ -47,6 +48,26 @@ class PrivatePages extends React.Component {
                 console.log(err)
             });
             
+    }
+
+
+    getQuote(symbol) {
+        axios.get(`https://cloud.iexapis.com/beta/stock/${symbol}/quote/?token=${API_KEY}&period=annual`)
+            .then(({ data }) => {
+                this.setState({
+                    open: true,
+                    companyName: data.companyName,
+                    latestPrice: data.latestPrice,
+                    symbol: data.symbol,
+                    annualHigh: data.week52High,
+                    annualLow: data.week52Low,
+                    change: data.ytdChange
+                })
+                console.log(data)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
     }
 
 
