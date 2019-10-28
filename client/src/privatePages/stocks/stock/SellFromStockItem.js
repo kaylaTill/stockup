@@ -5,7 +5,7 @@ import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 const SellFromStockItem = ((props) => {
     return (
         <Collapse in={props.sellOpen}>
-            <Form id="sell-form">
+            <Form id="sell-form" onSubmit={props.handleSell}>
                 <Button variant="outline-light"
                     size="sm"
                     name="decrease"

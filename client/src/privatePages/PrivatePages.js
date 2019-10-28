@@ -22,6 +22,8 @@ class PrivatePages extends React.Component {
         this.buyStock = this.buyStock.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.filterBySymbol = this.filterBySymbol.bind(this);
+        this.sellStock = this.sellStock.bind(this);
+        this.sellAllCompanyStock = this.sellAllCompanyStock.bind(this);
     }
 
     componentDidMount() {
@@ -65,17 +67,53 @@ class PrivatePages extends React.Component {
             companyName: companyName,
             price: price,
             shares: shares,
-            balance: this.state.balance - ((price * shares) * 1.00),
+            balance: (parseFloat(this.state.balance) - parseFloat(price * shares)),
             updateShares: updateShares
         })
         .then((res) => {
             console.log(res)
-            window.location.href = '/congratulations'
+            window.location.href = '/buy-congratulations'
         })
         .catch((err) => {
             console.log(err)
         });
     }
+
+
+    sellStock(symbol, price, shares) {
+        console.log((price * shares))
+        axios.post('/sell-stock', {
+            symbol: symbol,
+            price: price,
+            shares: shares,
+            balance: (parseFloat(this.state.balance) + parseFloat(price * shares))
+        })
+            .then((res) => {
+                console.log(res)
+                window.location.href = '/sell-congratulations'
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }
+        
+    sellAllCompanyStock() {
+        axios.post('/sell-all-stock', {
+            symbol: symbol,
+            price: price,
+            shares: shares,
+            balance: this.state.balance - ((price * shares) * 1.00)
+        })
+            .then((res) => {
+                console.log(res)
+                window.location.href = '/sell-congratulations'
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+            
+    }
+
 
 
     handleSearch(symbol) {
@@ -105,6 +143,7 @@ class PrivatePages extends React.Component {
                         <Trade 
                             handleSearch={this.handleSearch}    
                             buyStock={this.buyStock} 
+                            sellStock={this.sellStock}
                             stocks={stocks} 
                             balance={this.state.balance}
                         />
@@ -118,13 +157,24 @@ class PrivatePages extends React.Component {
                         <Buy buyStock={this.buyStock}/>
                     </Route>
 
-                    <Route path={'/congratulations'}>
+                    <Route path={'/buy-congratulations'}>
                         <div>
                             <Button block size='sm' 
                                 variant="outline-light"
                                 className="congrats"
                                 href={'/trade'}>
                                 Congratulations, see your newly bought stock here!
+                            </Button>
+                        </div>
+                    </Route>
+
+                    <Route path={'/sell-congratulations'}>
+                        <div>
+                            <Button block size='sm' 
+                                variant="outline-light"
+                                className="congrats"
+                                href={'/trade'}>
+                                Congratulations, see your new balance here!
                             </Button>
                         </div>
                     </Route>
