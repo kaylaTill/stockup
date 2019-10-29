@@ -1,10 +1,21 @@
 .stock-table {
     color: white;
     font-family: Impact, fantasy;
+    margin-bottom: 10%;
+    text-align: left;
+}
+
+.balance {
+    position: relative;
+    left: 205%;
+    margin-bottom: 5%;
+}
+.stock-labels {
+    text-align: left;
 }
 
 .stock-item {
-    text-align: center;
+    text-align: left;
 } 
 .stock-item:hover {
     background-color: #2a2a2a ;
@@ -12,14 +23,15 @@
 
 .buy-more {
     margin-top: 10%;
+    height: 20%;
     position: relative;
-    left: 108%;
+    left: 100%;
 }
 
 #buy-more-form  {
     position: relative;
     margin-top: 10%;
-    left: 72%;
+    left: 64%;
 }
 .collapse-buy {
     position: relative;
@@ -31,20 +43,29 @@
 .sell {
     position: relative;
     margin-top: 5%;
+    height: 20%;
     margin-bottom: 10%;
-    left: 108%;
+    left: 100%;
 }
 
 #sell-form {
     position: relative;
     margin-top: 10%;
-    left: 71%;
+    left: 64%;
 }
 
 .collapse-sell {
     position: relative;
     margin-top: 10%;
     width: 35%;
-    left: 71%;
+    left: 70%;
+    margin-bottom: 10%;
+}
+
+.sell-all {
+    position: relative;
+    margin-top: 10%;
+    width: 35%;
+    left: 70%;
     margin-bottom: 10%;
 }

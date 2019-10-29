@@ -147,13 +147,27 @@ app.post('/buy-stock', (req, res, next) => {
     .then((results) => {
         console.log('-----Found User-----');
         const userId = results.id;
-        userstock.UserStock.create({
-            symbol: req.body.symbol,
-            companyName: req.body.companyName,
-            price: req.body.price,
-            shares: req.body.shares,
-            user_id: userId
-        })
+        userstock.UserStock.findOne({where: {user_id: userId, symbol: req.body.symbol}})
+            .then((results) => {
+                console.log('-----FOUND STOCK FOR USER -----')
+                if (results) {
+                    console.log(results)
+                    console.log('-----UPDATED STOCK -----');
+                    return userstock.UserStock.update(
+                        { shares: req.body.updateShares }, 
+                        {where: {id: results.id}}
+                    )
+                } 
+                console.log('-----CREATED NEW  STOCK -----')
+                userstock.UserStock.create({
+                    symbol: req.body.symbol,
+                    companyName: req.body.companyName,
+                    price: req.body.price,
+                    shares: req.body.shares,
+                    user_id: userId
+                })
+            })
+
         .then(() => {
             console.log('-----User Stock Added-----');
             userBalance.UserBalance.update(
@@ -171,6 +185,84 @@ app.post('/buy-stock', (req, res, next) => {
     });
 })
 
+
+
+app.post('/sell-stock', (req, res, next) => {
+    User.User.findOne({ where: { username: req.session.user.username } })
+        .then((results) => {
+            console.log('-----Found User-----');
+            const userId = results.id;
+            userstock.UserStock.findOne({ where: { user_id: userId, symbol: req.body.symbol } })
+                .then((results) => {
+                    userstock.UserStock.update(
+                        { shares: req.body.shares },
+                        { where: { id: results.id } }
+                    )
+                })
+                .then(() => {
+                    console.log('-----User Stock Sold -----');
+                    userBalance.UserBalance.update(
+                        { user_balance: req.body.balance },
+                        { where: { user_id: userId } }
+                    )
+                    res.sendStatus(200);
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        })
+        .catch(() => {
+            res.status(404)
+        });
+
+})
+
+
+
+app.post('/sell-all-stock', (req, res, next) => {
+    User.User.findOne({ where: { username: req.session.user.username } })
+        .then((results) => {
+            console.log('-----Found User-----');
+            const userId = results.id;
+            userstock.UserStock.findOne({ where: { user_id: userId, symbol: req.body.symbol } })
+                .then((results) => {
+                    userstock.UserStock.destroy(
+                        { where: { id: results.id } }
+                    )
+                })
+                .then((res) => {
+                    userBalance.UserBalance.update(
+                        { user_balance: req.body.balance },
+                        { where: { user_id: userId } }
+                    )
+                })
+                .catch((err) => {
+                    console.log(err)
+                });
+        })
+        .catch(() => {
+            res.status(404)
+        });
+
+
+})
+
+app.post('/add-to-balance', (req, res, next) => {
+    User.User.findOne({ where: { username: req.session.user.username } })
+    .then((result) => {
+        userBalance.UserBalance.update(
+            { user_balance: req.body.balance },
+            { where: { user_id: result.id } }
+        )
+        .then(() => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    })
+})
+
 app.get('/user-stock', (req, res, next) => {
     User.User.findOne({ where: { username: req.session.user.username }})
     .then((result) => {
@@ -178,10 +270,11 @@ app.get('/user-stock', (req, res, next) => {
         .then((results) => {
             res.json(results)
         })
-        .catch((err) => {
-            console.log(err);
-            res.status(404);
-        })
+        .catch((err) => console.log(err))
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(404);
     })
 })
 

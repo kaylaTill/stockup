@@ -1,7 +1,6 @@
 import React from 'react';
 import { Collapse, Button, Form } from 'react-bootstrap';
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './StockList.css';
+import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import BuyFromStockItem from './BuyFromStockItem';
 import SellFromStockItem from './SellFromStockItem';
 
@@ -13,9 +12,9 @@ class StockListItem extends React.Component {
             buyMoreOpen: false,
             sellOpen: false,
             shares: 0,
-            companyName: '',
-            symbol: '',
-
+            companyName: this.props.stock.companyName,
+            symbol: this.props.stock.symbol,
+            price: this.props.stock.price
         }
         this.collapseItem = this.collapseItem.bind(this);
         this.collapseBuy = this.collapseBuy.bind(this);
@@ -23,6 +22,8 @@ class StockListItem extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleShareUpdate = this.handleShareUpdate.bind(this);
         this.handleBuy = this.handleBuy.bind(this);
+        this.handleSell = this.handleSell.bind(this);
+        this.handleSellAll = this.handleSellAll.bind(this);
     }
 
 
@@ -54,8 +55,28 @@ class StockListItem extends React.Component {
         this.props.buyStock(
             this.state.symbol,
             this.state.companyName,
-            this.state.latestPrice,
-            this.state.shares
+            this.state.price,
+            this.state.shares,
+            (this.props.stock.shares + this.state.shares)
+        )
+    }
+
+
+    handleSell(event) {
+        event.preventDefault()
+        this.props.sellStock(
+            this.state.symbol,
+            this.state.price,
+            (this.props.stock.shares - this.state.shares)
+        )
+    }
+
+    handleSellAll(event) {
+        event.preventDefault()
+        this.props.sellAll(
+            this.state.symbol,
+            this.state.price,
+            (this.props.stock.shares - this.state.shares)
         )
     }
 
@@ -76,9 +97,9 @@ class StockListItem extends React.Component {
                 >
                     <td className="company-name">{stock.companyName}</td>
                     <td className="symbol-table">{stock.symbol}</td>
-                    <td className="price">{stock.price}</td>
+                    <td className="price">{stock.price} | usd</td>
                     <td className="total-shares">{stock.shares}</td>
-                    <td className="total-price">{stock.shares * stock.price}</td>
+                    <td className="total-price">{(stock.shares * stock.price).toFixed(2)} | usd</td>
                 </tr>
                 <Collapse in={this.state.itemOpen}>
                     <div id="item-info">
@@ -96,6 +117,7 @@ class StockListItem extends React.Component {
                                 buyMoreOpen={this.state.buyMoreOpen} 
                                 shares={this.state.shares} 
                                 handleChange={this.handleChange} 
+                                handleBuy={this.handleBuy}
                                 handleShareUpdate={this.handleShareUpdate}
                             />
                         </div>
@@ -108,10 +130,14 @@ class StockListItem extends React.Component {
                                 onClick={this.collapseSell}
                                 aria-expanded={this.state.sellOpen}
                             > Sell </Button>
+
                             <SellFromStockItem
                                 sellOpen={this.state.sellOpen}
+                                symbol={stock.symbol}
                                 shares={this.state.shares}
+                                handleSell={this.handleSell}
                                 handleChange={this.handleChange}
+                                handleSellAll={this.handleSellAll}
                                 handleShareUpdate={this.handleShareUpdate}
                             />
                         </div>
