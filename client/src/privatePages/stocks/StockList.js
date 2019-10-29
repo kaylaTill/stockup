@@ -2,13 +2,14 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './StockList.css';
-import StockListItem from './StockItem';
+import StockListItem from './stock/StockItem';
 
 const StockList  = ((props) => {
     return (
         <Table responsive className="stock-table">
             <thead>
-                <tr>
+                <div className="balance">Current Balance:   ${props.balance} | usd</div>
+                <tr className="stock-labels">
                     <th>Company Name</th>
                     <th>Symbol</th>
                     <th>Price Per Share</th>
@@ -19,7 +20,13 @@ const StockList  = ((props) => {
             <tbody className="stock">
                 {props.stocks.map((stock, index) => {
                     return (
-                        <StockListItem key={index} stock={stock}/>
+                        <StockListItem  
+                            sellAll={props.sellAll} 
+                            sellStock={props.sellStock} 
+                            buyStock={props.buyStock} 
+                            key={index} 
+                            stock={stock}
+                        />
                     )
                 })}
             </tbody>
