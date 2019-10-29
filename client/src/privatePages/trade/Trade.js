@@ -1,9 +1,9 @@
 import React from 'react';
 import StockList from '../stocks/StockList';
 import { Button, Form, Collapse } from 'react-bootstrap';
+import Search from '../stocks/Search';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './trade.css';
-import Search from '../stocks/Search';
 
 
 class Trade extends React.Component {

@@ -102,7 +102,7 @@ class PrivatePages extends React.Component {
             symbol: symbol,
             balance: (parseFloat(this.state.balance) + parseFloat(price * shares))
         })
-            .then(() => {
+            .then((res) => {
                 window.location.href = '/sell-congratulations'
             })
             .catch((err) => {
@@ -121,7 +121,6 @@ class PrivatePages extends React.Component {
             console.log(err)
         })
     }
-
 
 
 
@@ -149,45 +148,46 @@ class PrivatePages extends React.Component {
                         <Route exact={true} path={'/'}>
                             <LineGraph/>
                         </Route>
+                    
+
+                        <Route exact={true} path={'/trade'}>
+                            <Trade 
+                                handleSearch={this.handleSearch}    
+                                buyStock={this.buyStock} 
+                                sellStock={this.sellStock}
+                                addToBalance={this.addToBalance}
+                                sellAll={this.sellAllCompanyStock}
+                                stocks={stocks} 
+                                balance={this.state.balance}
+                            />
+                        </Route>
+
+                        <Route exact={true} path={'/quote'}>
+                            <Quote getQuote={this.getQuote} buyStock={this.buyStock} />
+                        </Route>
+
+                        <Route path={'/buy-congratulations'}>
+                            <div>
+                                <Button block size='sm' 
+                                    variant="outline-light"
+                                    className="congrats"
+                                    href={'/trade'}>
+                                    Congratulations, see your newly bought stock here!
+                                </Button>
+                            </div>
+                        </Route>
+
+                        <Route path={'/sell-congratulations'}>
+                            <div>
+                                <Button block size='sm' 
+                                    variant="outline-light"
+                                    className="congrats"
+                                    href={'/trade'}>
+                                    Congratulations, see your new balance here!
+                                </Button>
+                            </div>
+                        </Route>
                     </Suspense>
-
-                    <Route exact={true} path={'/trade'}>
-                        <Trade 
-                            handleSearch={this.handleSearch}    
-                            buyStock={this.buyStock} 
-                            sellStock={this.sellStock}
-                            addToBalance={this.addToBalance}
-                            sellAll={this.sellAllCompanyStock}
-                            stocks={stocks} 
-                            balance={this.state.balance}
-                        />
-                    </Route>
-
-                    <Route exact={true} path={'/quote'}>
-                        <Quote getQuote={this.getQuote} buyStock={this.buyStock} />
-                    </Route>
-
-                    <Route path={'/buy-congratulations'}>
-                        <div>
-                            <Button block size='sm' 
-                                variant="outline-light"
-                                className="congrats"
-                                href={'/trade'}>
-                                Congratulations, see your newly bought stock here!
-                            </Button>
-                        </div>
-                    </Route>
-
-                    <Route path={'/sell-congratulations'}>
-                        <div>
-                            <Button block size='sm' 
-                                variant="outline-light"
-                                className="congrats"
-                                href={'/trade'}>
-                                Congratulations, see your new balance here!
-                            </Button>
-                        </div>
-                    </Route>
                 </Switch>
             </Router>
         );
