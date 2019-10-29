@@ -78,7 +78,7 @@ class StockListItem extends React.Component {
             this.state.price,
             (this.props.stock.shares - this.state.shares)
         )
-        window.location.reload()
+        window.location.href ='/sell-congratulations'
     }
 
 
