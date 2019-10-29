@@ -35,18 +35,18 @@ class LineGraph extends Component {
 
     getFormattedDate(date) {
         const months = [
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
+            "Jan", "Feb", "Mar", "Apr", "May", "June",
+            "July", "Aug", "Sept", "Oct", "Nov", "Dec"
         ];
 
-        var year = date.getFullYear();
-        var month = (date.getMonth());
+        // var year = String(date.getFullYear()).slice(-2);
+        var month = date.getMonth();
         month = months[month];
 
         var day = date.getDate().toString();
         day = day.length > 1 ? day : '0' + day;
 
-        return month + ' ' + day + ' ' + year;
+        return month + ' ' + day;
     }
     
     
