@@ -4,12 +4,16 @@
     position: relative;
     font-size: 20px;
     left: 50%;
+    margin-top: 0%;
 }
 
 .graph-container {
     color: white;
     width: 70%;
-    height: 50%;
+    height: 30%;
+    position: relative;
+    left: 10%;
+    top: 0%;
 }
 
 .graph {
@@ -17,8 +21,23 @@
     font-family: Impact, fantasy;
 }
 
-.search-button {
-    width: 20%;
+.search {
+    width: 30%;
     position: relative;
-    left: 80%;
+    left: 32%;
+    margin-bottom: 10%;
+}
+.search-button {
+    position: relative;
+    height: 15%;
+    font-family: Impact, fantasy;
+}
+
+#search-collapse {
+    width: 60%;
+    margin-top: 5%;
+    height: 15%;
+    position: relative;
+    left: 20%;
+    font-family: Impact, fantasy;
 }

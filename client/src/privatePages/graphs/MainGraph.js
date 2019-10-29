@@ -13,17 +13,33 @@ class LineGraph extends Component {
         
         this.state = {
             data: [],
-            graphSymbol: '',
+            value: '',
             open: false
         }
         this.getFormattedDate = this.getFormattedDate.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.getInfo = this.getInfo.bind(this);
+        this.clearForm = this.clearForm.bind(this);
     }
 
-
-    componentDidMount() {
-        this.getInfo('FB');
+    handleChange(event) {
+        this.setState({
+            value: event.target.value
+        })
     }
+
+    handleSubmit(event) {
+        event.preventDefault()
+        this.getInfo(this.state.value);
+    }
+
+    clearForm() {
+        this.setState({
+            value: ''
+        })
+    }
+
     
     getInfo(symbol) {
         axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?start_date=2018-01-01&end_date=2019-01-01&api_key=${API_KEY}`)
@@ -52,12 +68,6 @@ class LineGraph extends Component {
     }
 
 
-    handleChange(event) {
-        this.setState({
-            graphSymbol: event.target.value
-        })
-    }
-    
     
     render() {
         const options = {
@@ -75,7 +85,6 @@ class LineGraph extends Component {
             ]
         }
         
-        // let orderedData = this.state.data.reverse();
         this.state.data.map((entry) => {
             options.labels.push(this.getFormattedDate(new Date(entry[0])))
             options.datasets[0].data.push(entry[1])
@@ -83,39 +92,44 @@ class LineGraph extends Component {
     
 
         return (
-            <div className="graph-container">
-                <Button className="search-button"
-                    block size='sm' variant="outline-light"
-                    onClick={() => { this.setState({ open: !this.state.open }) }}
-                    aria-controls="search-collapse"
-                    aria-expanded={this.state.open}
-                >Search Symbol Stock
-                </Button>
+            <div>
+                <div className="graph-container">
+                    <div className="title">{`${this.state.value.toUpperCase()} Stock`}</div>
+                    <Line
+                        data={options}
+                        options={{
+                            legend: {
+                                display: true,
+                                position: 'bottom'
+                            }
+                        }}
+                    />
+                </div>
+                <br></br>
+                <div className="search">
+                    <Button className="search-button"
+                        block size='sm' variant="outline-light"
+                        onClick={() => { this.setState({ open: !this.state.open }) }}
+                        aria-controls="search-collapse"
+                        aria-expanded={this.state.open}
+                    >Search Symbol Stock
+                    </Button>
 
-                <Collapse in={this.state.open}>
-                    <Form id="search-collapse" onSubmit={this.getInfo}>
-                        <Form.Control
-                            name="symbol"
-                            className="symbol"
-                            autoComplete="off"
-                            placeholder="Symbol"
-                            value={this.state.value}
-                            onChange={this.handleChange}
-                        />
-                    </Form>
-                </Collapse>
-
-                <div className="title">Stock</div>
-                <Line
-                    data={options}
-                    options={{
-                        legend: {
-                            display: true,
-                            position: 'bottom'
-                        }
-                    }}
-                />
+                    <Collapse in={this.state.open}>
+                        <Form id="search-collapse" onSubmit={this.handleSubmit}>
+                            <Form.Control
+                                name="symbol"
+                                className="symbol"
+                                autoComplete="off"
+                                placeholder="Symbol"
+                                value={this.state.value}
+                                onChange={this.handleChange}
+                            />
+                        </Form>
+                    </Collapse>
+                </div>
             </div>
+
         );
     }
 }
