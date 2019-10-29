@@ -13,7 +13,7 @@
     height: 30%;
     position: relative;
     left: 10%;
-    top: 0%;
+    top: 2%;
 }
 
 .graph {
@@ -24,8 +24,8 @@
 .search {
     width: 30%;
     position: relative;
-    left: 32%;
-    margin-bottom: 10%;
+    left: 30%;
+    margin-bottom: 20%;
 }
 .search-button {
     position: relative;

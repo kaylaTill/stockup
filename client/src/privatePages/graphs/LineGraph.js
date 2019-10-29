@@ -3,7 +3,7 @@ import axios from 'axios';
 import API_KEY from './key';
 import { Line, defaults } from 'react-chartjs-2';
 defaults.global.defaultFontFamily = 'Impact, fantasy';
-import './MainGraph.css';
+import './LineGraph.css';
 import { Form, Button, Collapse } from 'react-bootstrap';
 
 class LineGraph extends Component {
@@ -12,15 +12,14 @@ class LineGraph extends Component {
         super(props);
         
         this.state = {
-            data: [],
             value: '',
+            data: [],
             open: false
         }
         this.getFormattedDate = this.getFormattedDate.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getInfo = this.getInfo.bind(this);
-        this.clearForm = this.clearForm.bind(this);
     }
 
     handleChange(event) {
@@ -34,22 +33,19 @@ class LineGraph extends Component {
         this.getInfo(this.state.value);
     }
 
-    clearForm() {
-        this.setState({
-            value: ''
-        })
+
+    getInfo(symbol) {
+        axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?start_date=2018-01-01&end_date=2019-01-01&api_key=${API_KEY}`)
+            .then(({ data }) => {
+                this.setState({ data: data.dataset.data.reverse() })
+            })
+            .catch((err) => {
+                console.log(err)
+            });
     }
 
     
-    getInfo(symbol) {
-        axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?start_date=2018-01-01&end_date=2019-01-01&api_key=${API_KEY}`)
-        .then(({ data }) => {
-            this.setState({data: data.dataset.data.reverse()})
-        })
-        .catch((err) => {
-            console.log(err)
-        });
-    }
+
 
     getFormattedDate(date) {
         const months = [
@@ -70,7 +66,7 @@ class LineGraph extends Component {
 
     
     render() {
-        const options = {
+        let options = {
             labels: [],
             datasets: [
                 {
@@ -84,13 +80,12 @@ class LineGraph extends Component {
                 }
             ]
         }
-        
+
         this.state.data.map((entry) => {
             options.labels.push(this.getFormattedDate(new Date(entry[0])))
             options.datasets[0].data.push(entry[1])
         })
-    
-
+        
         return (
             <div>
                 <div className="graph-container">

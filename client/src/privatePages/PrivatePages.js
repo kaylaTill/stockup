@@ -8,8 +8,9 @@ import Buy from './buy/Buy';
 import Quote from './quote/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import  './PrivatePages.css';
-import API_KEY from '../key';
+import API_KEY from './graphs/key';
 import { timingSafeEqual } from 'crypto';
+import LineGraph from './graphs/LineGraph';
 
 class PrivatePages extends React.Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class PrivatePages extends React.Component {
         this.sellStock = this.sellStock.bind(this);
         this.sellAllCompanyStock = this.sellAllCompanyStock.bind(this);
         this.addToBalance = this.addToBalance.bind(this);
+        
     }
 
     componentDidMount() {
@@ -61,6 +63,7 @@ class PrivatePages extends React.Component {
                 console.log(err);
             });
     }
+
 
     buyStock(symbol, companyName, price, shares, updateShares = 0) {
         axios.post('/buy-stock', {
@@ -146,7 +149,7 @@ class PrivatePages extends React.Component {
 
                 <Switch fallback={<div></div>}>
                     <Route exact={true} path={'/'}>
-                        <AreaChart/>
+                        <LineGraph data={this.state.data} getInfo={this.getInfo}/>
                     </Route>
                     <Route exact={true} path={'/trade'}>
                         <Trade 
