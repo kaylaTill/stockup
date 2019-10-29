@@ -15,10 +15,16 @@ class LineGraph extends Component {
             graphSymbol: ''
         }
         this.getFormattedDate = this.getFormattedDate.bind(this);
+        this.getInfo = this.getInfo.bind(this);
+    }
+
+
+    componentDidMount() {
+        this.getInfo('FB');
     }
     
-    componentDidMount() {
-        axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${'FB'}.json?start_date=2018-01-01&end_date=2019-01-01&api_key=${API_KEY}`)
+    getInfo(symbol) {
+        axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?start_date=2018-01-01&end_date=2019-01-01&api_key=${API_KEY}`)
         .then(({ data }) => {
             this.setState({data: data.dataset.data})
         })
@@ -83,7 +89,6 @@ class LineGraph extends Component {
         );
     }
 }
-
 
 
 export default LineGraph;
