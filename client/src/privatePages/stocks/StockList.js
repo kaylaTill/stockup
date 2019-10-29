@@ -1,8 +1,8 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import StockListItem from './stock/StockItem';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './StockList.css';
-import StockListItem from './stock/StockItem';
 
 const StockList  = ((props) => {
     return (

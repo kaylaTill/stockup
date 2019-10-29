@@ -4,13 +4,10 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import PrivateNav from './privateNav';
 import Trade from './trade/Trade';
-import Buy from './buy/Buy';
 import Quote from './quote/Quote';
+import LineGraph from './graphs/LineGraph';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import  './PrivatePages.css';
-import API_KEY from './graphs/key';
-import { timingSafeEqual } from 'crypto';
-import LineGraph from './graphs/LineGraph';
 
 class PrivatePages extends React.Component {
     constructor(props) {
@@ -147,10 +144,13 @@ class PrivatePages extends React.Component {
             <Router>
                 <PrivateNav handleLogout={this.handleLogout}/>
 
-                <Switch fallback={<div></div>}>
-                    <Route exact={true} path={'/'}>
-                        <LineGraph data={this.state.data} getInfo={this.getInfo}/>
-                    </Route>
+                <Switch>
+                    <Suspense fallback={<div></div>}>
+                        <Route exact={true} path={'/'}>
+                            <LineGraph/>
+                        </Route>
+                    </Suspense>
+
                     <Route exact={true} path={'/trade'}>
                         <Trade 
                             handleSearch={this.handleSearch}    
@@ -165,10 +165,6 @@ class PrivatePages extends React.Component {
 
                     <Route exact={true} path={'/quote'}>
                         <Quote getQuote={this.getQuote} buyStock={this.buyStock} />
-                    </Route>
-
-                    <Route exact={true} path={'/buy'}>
-                        <Buy buyStock={this.buyStock}/>
                     </Route>
 
                     <Route path={'/buy-congratulations'}>

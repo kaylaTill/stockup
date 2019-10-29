@@ -26,11 +26,11 @@ class LineGraph extends Component {
         this.setState({
             value: event.target.value
         })
+        this.getInfo(event.target.value);
     }
 
     handleSubmit(event) {
         event.preventDefault()
-        this.getInfo(this.state.value);
     }
 
 
@@ -40,7 +40,7 @@ class LineGraph extends Component {
                 this.setState({ data: data.dataset.data.reverse() })
             })
             .catch((err) => {
-                console.log(err)
+                this.setState({data: []})
             });
     }
 
@@ -80,11 +80,12 @@ class LineGraph extends Component {
                 }
             ]
         }
-
-        this.state.data.map((entry) => {
-            options.labels.push(this.getFormattedDate(new Date(entry[0])))
-            options.datasets[0].data.push(entry[1])
-        })
+        if (this.state.value.length >= 1) {
+            this.state.data.map((entry) => {
+                options.labels.push(this.getFormattedDate(new Date(entry[0])))
+                options.datasets[0].data.push(entry[1])
+            })
+        }
         
         return (
             <div>
