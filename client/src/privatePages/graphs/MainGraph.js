@@ -65,14 +65,14 @@ class LineGraph extends Component {
         })
 
         return (
-            <div className="graph">
+            <div className="graph-container">
                 <div className="title">Stock</div>
                 <Line
                     data={options}
                     options={{
                         legend: {
-                            display: false,
-                            position: 'right'
+                            display: true,
+                            position: 'bottom'
                         }
                     }}
                 />

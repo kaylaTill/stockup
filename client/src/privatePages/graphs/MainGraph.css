@@ -3,11 +3,16 @@
     font-family: Impact, fantasy;
     position: relative;
     font-size: 20px;
-    left: 20%;
+    left: 50%;
+}
+
+.graph-container {
+    color: white;
+    width: 60%;
+    height: 50%;
 }
 
 .graph {
     color: white;
-    width: 60%;
-    height: 50%;
+    font-family: Impact, fantasy;
 }
