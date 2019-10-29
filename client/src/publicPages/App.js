@@ -1,8 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-// import Logo from '../stockUP-logo-white.png';
 import Register from './registration/registration';
-// import RegisterSuccess from './registration/successRegistration';
 import Login from './login/login'
 import axios from 'axios';
 import LoginFailure from './login/failedLogin';

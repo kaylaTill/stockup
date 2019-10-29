@@ -29,11 +29,6 @@ class LineGraph extends Component {
         this.getInfo(event.target.value);
     }
 
-    handleSubmit(event) {
-        event.preventDefault()
-    }
-
-
     getInfo(symbol) {
         axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?start_date=2018-01-01&end_date=2019-01-01&api_key=${API_KEY}`)
             .then(({ data }) => {
@@ -52,8 +47,6 @@ class LineGraph extends Component {
             "Jan", "Feb", "Mar", "Apr", "May", "June",
             "July", "Aug", "Sept", "Oct", "Nov", "Dec"
         ];
-
-        // var year = String(date.getFullYear()).slice(-2);
         var month = date.getMonth();
         month = months[month];
 

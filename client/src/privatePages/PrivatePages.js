@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import PrivateNav from './privateNav';
@@ -89,7 +89,6 @@ class PrivatePages extends React.Component {
             balance: (parseFloat(this.state.balance) + parseFloat(price * shares))
         })
             .then((res) => {
-                console.log(res)
                 window.location.href = '/sell-congratulations'
             })
             .catch((err) => {
@@ -103,7 +102,6 @@ class PrivatePages extends React.Component {
             balance: (parseFloat(this.state.balance) + parseFloat(price * shares))
         })
             .then(() => {
-                console.log('sold!')
                 window.location.reload()
             })
             .catch((err) => {

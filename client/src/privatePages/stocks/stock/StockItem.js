@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Button, Form } from 'react-bootstrap';
+import { Collapse, Button } from 'react-bootstrap';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import BuyFromStockItem from './BuyFromStockItem';
 import SellFromStockItem from './SellFromStockItem';
@@ -78,7 +78,7 @@ class StockListItem extends React.Component {
             this.state.price,
             (this.props.stock.shares - this.state.shares)
         )
-        window.location.href ='/sell-congratulations'
+        window.location.href ='/sell-congratulations';
     }
 
 
