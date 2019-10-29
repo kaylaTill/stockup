@@ -11,16 +11,15 @@
     font-family: Impact, fantasy;
     width: 15%;
     height: 10%;
+    margin-bottom: 10px;
     position:relative; 
     left: 80%;
 }
-
-
 
 #add-balance {
     width: 20%;
     position: relative;
     font-family: Impact, fantasy;
     left: 77%;
-    height: 5%;
+    height: 2%;
 }

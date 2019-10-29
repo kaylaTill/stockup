@@ -80,7 +80,7 @@ class LineGraph extends Component {
         }
         
         return (
-            <div>
+            <div className='main-container'>
                 <div className="graph-container">
                     <div className="title">{`${this.state.value.toUpperCase()} Stock`}</div>
                     <Line
@@ -93,7 +93,6 @@ class LineGraph extends Component {
                         }}
                     />
                 </div>
-                <br></br>
                 <div className="search">
                     <Button className="search-button"
                         block size='sm' variant="outline-light"
@@ -104,10 +103,10 @@ class LineGraph extends Component {
                     </Button>
 
                     <Collapse in={this.state.open}>
-                        <Form id="search-collapse" onSubmit={this.handleSubmit}>
+                        <Form id="graph-search-collapse" onSubmit={this.handleSubmit}>
                             <Form.Control
                                 name="symbol"
-                                className="symbol"
+                                className="graph-symbol"
                                 autoComplete="off"
                                 placeholder="Symbol"
                                 value={this.state.value}

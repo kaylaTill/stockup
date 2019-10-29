@@ -4,27 +4,31 @@
     position: relative;
     font-size: 20px;
     left: 50%;
-    margin-top: 0%;
+}
+.main-container {
+    margin-top: 0px;
 }
 
 .graph-container {
     color: white;
-    width: 70%;
-    height: 30%;
+    width: 65%;
+    height: 20%;
     position: relative;
-    left: 10%;
-    top: 2%;
+    left: 12%;
+    top: 5%;
 }
 
 .graph {
     color: white;
+    height: 20%;
     font-family: Impact, fantasy;
 }
 
 .search {
     width: 30%;
+    margin-top: 10px;
     position: relative;
-    left: 30%;
+    left: 32%;
     margin-bottom: 20%;
 }
 .search-button {
@@ -33,11 +37,10 @@
     font-family: Impact, fantasy;
 }
 
-#search-collapse {
-    width: 60%;
-    margin-top: 5%;
-    height: 15%;
+#graph-search-collapse {
+    width: 30%;
+    margin-top: 5px;
     position: relative;
-    left: 20%;
+    left: 35%;
     font-family: Impact, fantasy;
 }
