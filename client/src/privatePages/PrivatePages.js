@@ -8,7 +8,6 @@ import Buy from './buy/Buy';
 import Quote from './quote/Quote';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import  './PrivatePages.css';
-import API_KEY from '../key';
 import AreaChart from './graphs/MainGraph';
 
 class PrivatePages extends React.Component {

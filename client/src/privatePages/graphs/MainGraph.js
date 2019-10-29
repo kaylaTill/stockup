@@ -4,6 +4,7 @@ import API_KEY from './key';
 import { Line, defaults } from 'react-chartjs-2';
 defaults.global.defaultFontFamily = 'Impact, fantasy';
 import './MainGraph.css';
+import { Form, Button, Collapse } from 'react-bootstrap';
 
 class LineGraph extends Component {
     
@@ -12,7 +13,8 @@ class LineGraph extends Component {
         
         this.state = {
             data: [],
-            graphSymbol: ''
+            graphSymbol: '',
+            open: false
         }
         this.getFormattedDate = this.getFormattedDate.bind(this);
         this.getInfo = this.getInfo.bind(this);
@@ -26,7 +28,7 @@ class LineGraph extends Component {
     getInfo(symbol) {
         axios.get(`https://www.quandl.com/api/v3/datasets/WIKI/${symbol}.json?start_date=2018-01-01&end_date=2019-01-01&api_key=${API_KEY}`)
         .then(({ data }) => {
-            this.setState({data: data.dataset.data})
+            this.setState({data: data.dataset.data.reverse()})
         })
         .catch((err) => {
             console.log(err)
@@ -48,6 +50,13 @@ class LineGraph extends Component {
 
         return month + ' ' + day;
     }
+
+
+    handleChange(event) {
+        this.setState({
+            graphSymbol: event.target.value
+        })
+    }
     
     
     render() {
@@ -66,8 +75,8 @@ class LineGraph extends Component {
             ]
         }
         
-        let orderedData = this.state.data.reverse();
-        orderedData.map((entry) => {
+        // let orderedData = this.state.data.reverse();
+        this.state.data.map((entry) => {
             options.labels.push(this.getFormattedDate(new Date(entry[0])))
             options.datasets[0].data.push(entry[1])
         })
@@ -75,6 +84,27 @@ class LineGraph extends Component {
 
         return (
             <div className="graph-container">
+                <Button className="search-button"
+                    block size='sm' variant="outline-light"
+                    onClick={() => { this.setState({ open: !this.state.open }) }}
+                    aria-controls="search-collapse"
+                    aria-expanded={this.state.open}
+                >Search Symbol Stock
+                </Button>
+
+                <Collapse in={this.state.open}>
+                    <Form id="search-collapse" onSubmit={this.getInfo}>
+                        <Form.Control
+                            name="symbol"
+                            className="symbol"
+                            autoComplete="off"
+                            placeholder="Symbol"
+                            value={this.state.value}
+                            onChange={this.handleChange}
+                        />
+                    </Form>
+                </Collapse>
+
                 <div className="title">Stock</div>
                 <Line
                     data={options}

@@ -8,11 +8,17 @@
 
 .graph-container {
     color: white;
-    width: 75%;
+    width: 70%;
     height: 50%;
 }
 
 .graph {
     color: white;
     font-family: Impact, fantasy;
+}
+
+.search-button {
+    width: 20%;
+    position: relative;
+    left: 80%;
 }
