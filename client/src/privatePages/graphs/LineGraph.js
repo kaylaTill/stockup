@@ -3,8 +3,8 @@ import axios from 'axios';
 import API_KEY from './key';
 import { Line, defaults } from 'react-chartjs-2';
 defaults.global.defaultFontFamily = 'Impact, fantasy';
-import './LineGraph.css';
 import { Form, Button, Collapse } from 'react-bootstrap';
+import './LineGraph.css';
 
 class LineGraph extends Component {
     
@@ -18,7 +18,6 @@ class LineGraph extends Component {
         }
         this.getFormattedDate = this.getFormattedDate.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.getInfo = this.getInfo.bind(this);
     }
 

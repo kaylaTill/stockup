@@ -34,7 +34,6 @@ class Trade extends React.Component {
         return (
             <div className="dashboard">
                 <Search handleSearch={this.props.handleSearch}/>
-               
                 <Button className="to-quote-button"
                     block size='sm' variant="outline-light"
                     href={'/quote'}
