@@ -146,7 +146,7 @@ class PrivatePages extends React.Component {
 
                 <Switch fallback={<div></div>}>
                     <Route exact={true} path={'/'}>
-                        
+                        <AreaChart/>
                     </Route>
                     <Route exact={true} path={'/trade'}>
                         <Trade 
