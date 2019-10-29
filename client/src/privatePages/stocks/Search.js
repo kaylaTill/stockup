@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
-
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './Search.css';
 
 class Search extends React.Component {
 
@@ -34,11 +35,8 @@ class Search extends React.Component {
 
     render() {
         return(
-            <Form className="search"
-                onSubmit={this.handleSubmit}
-            >
+            <Form className="search" onSubmit={this.handleSubmit}>
                 <Form.Control
-                    className="input-search"
                     name="value"
                     autoComplete="off"
                     placeholder="Filter By Search.."
