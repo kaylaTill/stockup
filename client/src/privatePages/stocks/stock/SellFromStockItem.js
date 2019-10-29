@@ -36,12 +36,15 @@ const SellFromStockItem = ((props) => {
 
                 </Form>
 
-                <Button
-                    onClick={props.handleSellAll}
-                    className="sell-all"
-                    variant="outline-light"
-                    size="sm" block
-                >{`Sell all ${props.symbol} Stock`}</Button>
+
+                <Form onSubmit={props.handleSellAll}>
+                    <Button
+                        type="submit"
+                        className="sell-all"
+                        variant="outline-light"
+                        size="sm" block
+                    >{`Sell all ${props.symbol} Stock`}</Button>
+                </Form>
             </div>
         </Collapse>
     );

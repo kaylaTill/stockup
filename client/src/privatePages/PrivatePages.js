@@ -102,8 +102,9 @@ class PrivatePages extends React.Component {
             symbol: symbol,
             balance: (parseFloat(this.state.balance) + parseFloat(price * shares))
         })
-            .then((res) => {
-                window.location.href = '/sell-congratulations'
+            .then(() => {
+                console.log('sold!')
+                window.location.reload()
             })
             .catch((err) => {
                 console.log(err)
