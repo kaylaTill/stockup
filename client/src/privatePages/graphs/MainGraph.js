@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import API_KEY from './key';
-import { Line } from 'react-chartjs-2';
+import { Line, defaults } from 'react-chartjs-2';
+defaults.global.defaultFontFamily = 'Impact, fantasy';
 import './MainGraph.css';
 
 class LineGraph extends Component {
@@ -59,10 +60,12 @@ class LineGraph extends Component {
             ]
         }
         
-        this.state.data.map((entry) => {
+        let orderedData = this.state.data.reverse();
+        orderedData.map((entry) => {
             options.labels.push(this.getFormattedDate(new Date(entry[0])))
             options.datasets[0].data.push(entry[1])
         })
+    
 
         return (
             <div className="graph-container">
